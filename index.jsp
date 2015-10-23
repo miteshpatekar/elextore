@@ -36,26 +36,30 @@
 				
 				<div class="items">
 					<ul>
-					<%
-					CatalogItem cat=null;
-					for(int i=0; i<4; i++) {
-					
-					Random r = new Random();
-				int Low = 0;
-				int High = catalogItems.size();
-				int R = r.nextInt(High-Low) + Low;
-					cat= (CatalogItem)catalogItems.get("item"+R);
-					
-					
-					%>
+
 				
-						<li>
-						<img src="<%=cat.getImagePath()%>" alt="No Image found for this product" width="250" height="238">
-						<h3><%=cat.getShortDescription()%></h3>
-						<p><b>$ <%=cat.getCost()%> <a href="/elextore/OrderPage.jsp?itemID=<%=cat.getItemID()%>"> Add To Cart </a></b></p>
-						</li>
+                <li>
+                <img src="images/mainpage/image4.jpg" alt="No Image found for this product" width="250" height="238">
+                <h3>Whirlpool Washing Machine</h3>
+                <p><b>$800 <a href="/elextore/OrderPage.jsp?itemID=4"> Add To Cart </a></b></p>
+                </li>
+                <li>
+                <img src="images/mainpage/image5.jpg" alt="No Image found for this product" width="250" height="238">
+                <h3>Samsung LED TV</h3>
+                <p><b>$999 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
+                </li>
+                <li>
+                <img src="images/mainpage/image6.jpg" alt="No Image found for this product" width="250" height="238">
+                <h3>Apple MacBook Pro</h3>
+                <p><b>$1999 <a href="/elextore/OrderPage.jsp?itemID=6"> Add To Cart </a></b></p>
+                </li>
+                <li>
+                <img src="images/mainpage/image7.jpg" alt="No Image found for this product" width="250" height="238">
+                <h3>Google Nexus 6</h3>
+                <p><b>$600 <a href="/elextore/OrderPage.jsp?itemID=7"> Add To Cart </a></b></p>
+                </li>
 				
-					<%}%>
+
 				
 				</ul>
 				
