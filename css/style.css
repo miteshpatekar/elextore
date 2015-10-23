@@ -137,17 +137,17 @@ width:100%;
 .logo
 {
 float:left;
-width:45%;
+width:35%;
 background-image: url("../images/mainpage/eleXtore_logo.png");
 background-repeat: no-repeat;
-height:120px;
+height:140px;
 }
 
 .links 
 {
 margin-top:68px;
 float:left;
-width:55%;
+width:65%;
 
 }
 
@@ -591,8 +591,26 @@ font-family: times, Times New Roman, times-roman, georgia, serif;
 	color: #30A2DE;
 	margin: 0;
 	padding: 0px 0px 6px 0px;
-	font-size: 31px;
+	font-size: 25px;
 	line-height: 44px;
 	letter-spacing: -2px;
 	font-weight: bold;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.acolor{
+    color:#30A2DE;
+    font-size:20px;
 }

@@ -34,7 +34,7 @@
 			<div class="itemgrid">
 				<h3>Featured Products</h3>
 				
-				<div class="items">
+				<div class="items" style="margin-left:20px">
 					<ul>
 
 				
