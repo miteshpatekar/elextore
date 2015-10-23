@@ -6,15 +6,15 @@
 				<td ALIGN="LEFT" WIDTH="10%">
 				
 				<H3><img src="images/products.png" alt="" /></H3>
-				<a href="Products.jsp?category=casuals" ><img src="images/casuals.png" alt="" /></a>
+				<a href="Products.jsp?category=casuals" class="products" >Appliances</a>
 				<br><br>
-				<a href="Products.jsp?category=Equipments" ><img src="images/equipe.png" alt="" /></a>
+				<a href="Products.jsp?category=Equipments" class="products" >TV & Home Theater</a>
 				<br><br>
-				<a href="Products.jsp?category=footwear" ><img src="images/footwear.png" alt="" /></a>
+				<a href="Products.jsp?category=footwear" class="products" >Computers & Tablets</a>
 				<br><br>
-				<a href="Products.jsp?category=men" ><img src="images/men.png" alt="" /></a>
+				<a href="Products.jsp?category=men" class="products" >Cameras & Camcorders</a>
 				<br><br>
-				<a href="Products.jsp?category=women" ><img src="images/women.png" alt="" /></a>
+				<a href="Products.jsp?category=women" class="products" >Audio</a>
 				<br><br>
 							
 				</td>

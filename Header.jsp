@@ -1,8 +1,7 @@
 <%@page import="mybean.UserBean" %>
 <html>
-<TITLE>Sport4Hawks</TITLE>
+<TITLE>elexTore</TITLE>
 <head>
-<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
 <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
@@ -57,21 +56,21 @@
 						<%if(userName.equals("Guest")){%>
 					<li><a href="login.jsp">Log In</a></li>
 					<%}%>
-					<li><a href="/sports4hawks/OrderPage.jsp">Checkout</a></li>
+					<li><a href="/elextore/OrderPage.jsp">Checkout</a></li>
 					<li><a href="viewOrders.jsp">View Orders</a></li>
 					<li><b><i><a style="color:blue" href="">WelCome <%= userName%></a></i></b></li>
 					<%if(!(userName.equals("Guest"))){%>
-					<li><a href="/sports4hawks/LogOutServlet">Log Off</a></li>
+					<li><a href="/elextore/LogOutServlet">Log Off</a></li>
 					<%}%>
 				</ul>
 				
 				<% if(cartItems.equals("0")) { %>
 				
-				<div class="cart" onclick="window.location ='/sports4hawks/OrderPage.jsp';">
+				<div class="cart" onclick="window.location ='/elextore/OrderPage.jsp';">
 				
 				<% } else { %>
 				
-				<div class="cart_full" onclick="window.location ='/sports4hawks/OrderPage.jsp';">
+				<div class="cart_full" onclick="window.location ='/elextore/OrderPage.jsp';">
 				
 				<% } %>
 				
@@ -83,9 +82,9 @@
 		&nbsp
 		<div class="navigatation">
 			<ul>
-				<li><a href="/sports4hawks/index.jsp">Home</a></li>
+				<li><a href="/elextore/index.jsp">Home</a></li>
 				<li><a href="aboutus.jsp">About</a></li>
-				<li><a href="/sports4hawks/contactus.jsp">Contacts</a></li>
+				<li><a href="/elextore/contactus.jsp">Contacts</a></li>
 			</ul>
 			
 			
@@ -109,15 +108,15 @@
 				<td ALIGN="LEFT" WIDTH="10%">
 				
 				<H3><img src="images/products.png" alt="" /></H3>
-				<a href="Products.jsp?category=casuals" ><img src="images/casuals.png" alt="" /></a>
+				<a href="Products.jsp?category=casuals" class="products" >Appliances</a>
 				<br><br>
-				<a href="Products.jsp?category=Equipments" ><img src="images/equipe.png" alt="" /></a>
+				<a href="Products.jsp?category=Equipments" class="products" >TV & Home Theater</a>
 				<br><br>
-				<a href="Products.jsp?category=footwear" ><img src="images/footwear.png" alt="" /></a>
+				<a href="Products.jsp?category=footwear" class="products" >Computers & Tablets</a>
 				<br><br>
-				<a href="Products.jsp?category=men" ><img src="images/men.png" alt="" /></a>
+				<a href="Products.jsp?category=men" class="products" >Cameras & Camcorders</a>
 				<br><br>
-				<a href="Products.jsp?category=women" ><img src="images/women.png" alt="" /></a>
+				<a href="Products.jsp?category=women" class="products" >Audio</a>
 				<br><br>
 							
 				</td>
@@ -126,12 +125,11 @@
 				
 				<div id="sliderFrame">
 					<div id="slider">
-					<a href="images/image1.jpg" target="_blank">
-						<img src="images/image1.jpg" alt="Welcome to Sports4hawk.com" />
+					<a href="images/mainpage/image1.jpg" target="_blank">
+						<img src="images/mainpage/image1.jpg" alt="Welcome to elexTore.com" />
 					</a>
-					<img src="images/image2.jpg" alt="" />
-					<img src="images/image3.jpg" alt="" />
-					<img src="images/image4.jpg" alt="" />
+					<img src="images/mainpage/image2.jpg" alt="" />
+					<img src="images/mainpage/image3.jpg" alt="" />
 					</div>
 				</div>
 				</td>

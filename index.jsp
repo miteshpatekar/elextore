@@ -52,7 +52,7 @@
 						<li>
 						<img src="<%=cat.getImagePath()%>" alt="No Image found for this product" width="250" height="238">
 						<h3><%=cat.getShortDescription()%></h3>
-						<p><b>$ <%=cat.getCost()%> <a href="/sports4hawks/OrderPage.jsp?itemID=<%=cat.getItemID()%>"> Add To Cart </a></b></p>
+						<p><b>$ <%=cat.getCost()%> <a href="/elextore/OrderPage.jsp?itemID=<%=cat.getItemID()%>"> Add To Cart </a></b></p>
 						</li>
 				
 					<%}%>
@@ -64,7 +64,7 @@
 				
 				<div class="footer">
 				
-				<p>Sports4Hawks powered by Sushil Ronak Rohit</p>
+				<p>elexTore powered by Sabya Mitesh Deepansha Snehal Nikhil</p>
 				
 				</div>
 				
