@@ -138,7 +138,7 @@ width:100%;
 {
 float:left;
 width:45%;
-background-image: url("../images/logo.png");
+background-image: url("../images/mainpage/eleXtore_logo.png");
 background-repeat: no-repeat;
 height:120px;
 }
@@ -212,7 +212,7 @@ text-decoration: none;
 {
 float:left;
 width:100%;
-background:black;
+background:#30A2DE;
 color:white;
 }
 
