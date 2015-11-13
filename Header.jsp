@@ -9,9 +9,8 @@
  <script type="text/javascript" src="JS/javascript.js"></script>
 
 <link href="css/generic.css" rel="stylesheet" type="text/css" />
-<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap-theme.css">	
- -->
 </head>
 
 
@@ -50,12 +49,11 @@
 	<div id="container">
 	
 		<div class="header">
-		
-			<div class="logo">
-
+			<div class="headertop_desc">
+			<div class="call">
+				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
 			</div>
-			<div class="links">
-			
+			<div class="account_desc">
 				<ul>
 					<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
 						<%if(userName.equals("Guest")){%>
@@ -68,6 +66,14 @@
 					<li><a href="/elextore/LogOutServlet" class="acolor" style="color:#30A2DE">Log Out</a></li>
 					<%}%>
 				</ul>
+			</div>
+			</div>
+		<div class="header_top">
+			<div class="logo">
+
+			</div>
+			<div class="links">
+			<ul></ul>
 				
 				<% if(cartItems.equals("0")) { %>
 				
@@ -83,6 +89,7 @@
 				<p><%=cartItems%></p>
 			
 			</div>
+		</div>
 		</div>
 		&nbsp
 
@@ -119,22 +126,10 @@
 
 
 		</div>
-		<br><br><br><br><br><br><br>
-		<div id="sliderFrame">
-					<div id="slider">
-					<a href="images/mainpage/image1.jpg" target="_blank">
-						<img src="images/mainpage/image1.jpg" alt="Welcome to elexTore.com" />
-					</a>
-					<img src="images/mainpage/image2.jpg" alt="" />
-					<img src="images/mainpage/image3.jpg" alt="" />
-					</div>
-		</div>
-		<br><br>
-
-		
-			<TABLE BORDER="0" WIDTH="100%">
+		<div class="categories">
+		<TABLE BORDER="0" WIDTH="100%">
 			<tr>
-				<td ALIGN="LEFT" WIDTH="23%" style="padding-left:20px">
+				<td ALIGN="LEFT" WIDTH="23%" style="padding-left:1px;">
 				
 				<h2 style="height: 44px; width: 200px;">Product Categories</h2>
 				<a href="Products.jsp?category=casuals" class="products" >Appliances</a>
@@ -149,46 +144,27 @@
 				<br>
 							
 				</td>
-				
+
 				<td ALIGN="center" WIDTH="80%">
-				<div class="itemgrid">
-				<h2>Featured Products</h2>
-				
-				<div class="items" style="margin-left:20px">
-				<ul>
+				<div id="sliderFrame">
 
 				
-                <li>
-                <img src="images/mainpage/image4.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Whirlpool Washing Machine</h4>
-                <p><b>$800 <a href="/elextore/OrderPage.jsp?itemID=4"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/mainpage/image5.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Samsung LED TV</h4>
-                <p><b>$999 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/mainpage/image6.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Apple MacBook Pro</h4>
-                <p><b>$1999 <a href="/elextore/OrderPage.jsp?itemID=6"> Add To Cart </a></b></p>
-                </li>
-                </ul>
-
-				</div>
-
-				</td>
+					<div id="slider">
+					<a href="images/mainpage/image1.jpg" target="_blank">
+					<img src="images/mainpage/image1.jpg" alt="Welcome to elexTore.com" />
+					</a>
+					<img src="images/mainpage/image2.jpg" alt="" />
+					<img src="images/mainpage/image3.jpg" alt="" />
+					</div>
 
 
-			</tr>
-
-			</TABLE>
+		</div>
+		<br><br>
+		</td>
+		</tr>
+		</TABLE>	
 			
-			<div class="footer">
-				
-				<p>elexTore powered by Sabya Mitesh Deepansha Snehal Nikhil</p>
-				
-				</div>
+			
 				</div>
 
 </body>			

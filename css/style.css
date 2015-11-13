@@ -207,7 +207,50 @@ text-decoration: none;
 .links ul li  a 
 {
 }
-
+.headertop_desc{
+    padding:20px 0;
+    height:20px;
+    border-bottom:1px solid #EEE;
+}
+.call{
+    float:left;
+}
+.call p{
+    font-size:1.2em;
+    color:#9C9C9C;
+}
+.call p span{
+    color:#303030;
+    font-size:1em;
+    font-weight:bold;
+}
+.call p span.number{
+    color:#E4292F;
+    font-size:1em;
+    letter-spacing:1px;
+}
+.account_desc{
+    float:right;
+}
+.account_desc li{
+    display:inline;
+    border-left:1px dotted #CCC;
+}
+.account_desc li:first-child{
+    border:none;
+}
+.account_desc li a{
+    font-size:1.2em;
+    color:#30A2DE;
+    padding:0 10px;
+    font-family: 'ambleregular';
+}
+.account_desc li a:hover{
+    color:#E4292F;
+}
+.header_top {
+    padding: 20px 0;
+}
 
 #container .navigatation 
 {
@@ -343,6 +386,35 @@ margin-left:1%;
 #container .navigatation ul li  a :hover 
 {
 color:green;
+}
+.categories{
+    border:1px solid #EEE;
+    padding-left: 0px;
+}
+.categories h2{
+    font-size:1.2em;
+    color:#FFF;
+    padding:10px;
+    background:#003366;
+    text-transform:uppercase;
+    font-family: 'ambleregular';    
+}
+.categories tr td a{
+    display:block;
+    font-size:1.1em;
+    padding:8px 15px;
+    color: #30A2DE;
+    font-family: 'ambleregular';
+    margin:0 20px;
+    background:url(../images/drop_arrow.png) no-repeat 0;
+    border-bottom: 1px solid #EEE;
+    text-transform:uppercase;   
+}
+.categories td:last-child a{
+    border:none;
+}
+.categories td a:hover{
+    color:#9C9C9C;
 }
 
 
