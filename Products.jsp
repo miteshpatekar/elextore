@@ -1,29 +1,100 @@
-
+ 
 <%@include file="Header.jsp"%>
 <body>
 <div class="well">
     <div class="row">
-            <div class="col-lg-2">Filter
-            	
-    			<div class="input-group">
+			<div class="col-lg-2">
+            <div class="col-lg-2">Filter by Brand Name:
+            	<div class="input-group">
       				<span class="input-group-addon">
        				<input type="checkbox" aria-label="...">
-        			Brand
+        			<a href="/dell" title="Dell" data-tracking-id="Top Brands_Dell">Alienware 15</a>
       				</span>   
     			</div>
     			<div class="input-group">
       				<span class="input-group-addon">
        				<input type="checkbox" aria-label="...">
-        			Brand1
+        			<a href="/lenovo" title="Dell" data-tracking-id="Top Brands_Dell">Latitude 14</a>
       				</span>   
     			</div>
     			<div class="input-group">
       				<span class="input-group-addon">
        				<input type="checkbox" aria-label="...">
-        			Brand2
+        			<a href="/hp" title="Dell" data-tracking-id="Top Brands_Dell">Dell Chrombook 11</a>
       				</span>   
     			</div>
-            </div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a href="/hp" title="Dell" data-tracking-id="Top Brands_Dell">Dell inspiron 13</a>
+      				</span>   
+    			</div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a href="/hp" title="Dell" data-tracking-id="Top Brands_Dell">Dell inspiron 14</a>
+      				</span>   
+    			</div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a href="/hp" title="Dell" data-tracking-id="Top Brands_Dell">Dell Precision M3800</a>
+      				</span>   
+    			</div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a href="/hp" title="Dell" data-tracking-id="Top Brands_Dell">Dell XPS 15 </a>
+      				</span>   
+    			</div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a href="/hp" title="Dell" data-tracking-id="Top Brands_Dell">Dell XPS 13 </a>
+      				</span>   
+    			</div>
+			
+			<div class="col-lg-2">Filter by Price:
+            	<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a  href="/laptops/" title="$ 300 and Below" data-tracking-id="Price_$ 300 and Below">$ 300 and Below</a>
+      				</span>   
+    			</div>
+    			<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a  href="/laptops/" title="$ 300 - $ 500" data-tracking-id="Price_$ 300 - $ 500">$ 300 - $ 500</a>
+      				</span>   
+    			</div>
+    			<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a  href="/laptops/" title="$ 500 - $ 700" data-tracking-id="Price_$ 500 - $ 700">$ 500 - $ 700</a>
+      				</span>   
+    			</div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a  href="/laptops/" title="$ 700 - $ 900" data-tracking-id="Price_$ 700 - $ 900">$ 700 - $ 900</a>
+      				</span>   
+    			</div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a  href="/laptops/" title="$ 900 - $ 1100" data-tracking-id="Price_$900 - $ 1100">$ 900 - $ 1100</a>
+      				</span>   
+    			</div>
+				<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			<a  href="/laptops/" title="$ 1100 and Above" data-tracking-id="Price_$ 1100 and Above">$ 1100 and Above</a>
+      				</span>   
+    			</div>
+				
+			</div>
+			</div>
+			</div>
              <div class="col-lg-10" style="border-left:2px solid grey">
              	<h3 >Products</p>
 
@@ -33,22 +104,48 @@
 				<div class="items" style="margin-left:20px">
 				<ul>				
                 <li>
-                <img src="images/mainpage/image4.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Whirlpool Washing Machine</h4>
+                <img src="images/dellinspiron3542.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Dell Inspiron 3542</h4>
                 <p><b>$800 <a href="/elextore/OrderPage.jsp?itemID=4"> Add To Cart </a></b></p>
                 </li>
                 <li>
-                <img src="images/mainpage/image5.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Samsung LED TV</h4>
-                <p><b>$999 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
+                <img src="images/dellinspiron13 7000series.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Dell Inspiron13 7000series</h4>
+                <p><b>$500 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
                 </li>
                 <li>
-                <img src="images/mainpage/image6.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Apple MacBook Pro</h4>
+                <img src="images/dellalienware15.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Alienware 15</h4>
                 <p><b>$1999 <a href="/elextore/OrderPage.jsp?itemID=6"> Add To Cart </a></b></p>
                 </li>
-                </ul>
-
+				<li>
+                <img src="images/dellprecisionM3800.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Dell Precision M3800</h4>
+                <p><b>$1500 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
+                </li>
+                <li>
+                <img src="images/dellxps15.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Dell XPS 15 Touch</h4>
+                <p><b>$1400 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
+                </li>
+                <li>
+                <img src="images/dellxps13.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Dell XPS 13 Touch</h4>
+                <p><b>$1200 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
+                </li>
+                <li>
+                <img src="images/dellinspiron14.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Dell Inspiron 14</h4>
+                <p><b>$799 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
+                </li>
+                <li>
+                <img src="images/delllatitude14.jpg" alt="No Image found for this product" width="250" height="238">
+                <h4>Dell Latitude</h4>
+                <p><b>$599 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
+                </li>
+                
+				</ul>
+				
 				</div>
 				</div>
 
