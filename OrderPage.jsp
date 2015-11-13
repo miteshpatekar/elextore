@@ -68,35 +68,34 @@ http://www.coreservlets.com/.
 					<div class="row">
    <div class="col-xs-4 description">
    <div class="row"><div class="col-xs-6 media">
-   <img src="images/laptop/mac.jpg"  alt="" aria-hidden="true">
+   
    </div><div class="col-xs-6 details"><div class="row">
-   <div class="col-xs-12"><a href="http://www.bestbuy.com/site/Apple+-+MacBook+Air%25C2%25AE+%2528Latest+Model%2529+-+13.3%2522+Display+-+Intel+Core+i5+-+4GB+Memory+-+128GB+Flash+Storage+-+Silver/1581921.p?skuId=1581921&amp;productCategoryId=pcmcat247400050001&amp;id=1219056464137"><span class="emphasized-copy short-description">Apple - MacBook Air® (Latest Model) - 13.3" Display - Intel Core i5 - 4GB Memory - 128GB Flash Storage - Silver</span></a></div></div>
-   <div class="row">
-   <div class="col-xs-12"><span class="emphasized-copy">Model: </span>&nbsp;MJVE2LL/A</div></div></div></div></div>
+     <div class="row">
+   <div class="col-xs-12"></div></div></div></div></div>
   <div class="col-xs-12">
   <form class="form-horizontal" role="form">
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Name:</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    <div class="col-sm-9">
+      <input type="email" class="form-control" id="email" placeholder="Enter name">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Address:</label>
     <div class="col-sm-10"> 
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter address">
     </div>
   </div>
     <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Phone Number:</label>
     <div class="col-sm-10"> 
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter phone number">
     </div>
   </div>
      <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Credit Card:</label>
     <div class="col-sm-10"> 
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter credit card">
     </div>
   </div>
   <div class="form-group"> 
