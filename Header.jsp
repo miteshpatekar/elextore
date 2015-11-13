@@ -9,6 +9,8 @@
  <script type="text/javascript" src="JS/javascript.js"></script>
 
 <link href="css/generic.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap-theme.css">	
 </head>
 
 
