@@ -62,11 +62,44 @@ http://www.coreservlets.com/.
 			session.setAttribute("cartItems",0);
 			%>
 			<%@include file="Header.jsp"%>
-			<HEAD><TITLE><%= title %></TITLE></HEAD>
+			<HEAD><TITLE><%= title %></TITLE></HEAD>co
                 <BODY BGCOLOR="#FDF5E6">
-              	<div class="orders">
-					<h2>There are No items in your cart...</h2> 
-			
+
+					<div class="row">
+   <div class="col-xs-4 description">
+   <div class="row"><div class="col-xs-6 media">
+   <img src="images/laptop/mac.jpg"  alt="" aria-hidden="true">
+   </div><div class="col-xs-6 details"><div class="row">
+   <div class="col-xs-12"><a href="http://www.bestbuy.com/site/Apple+-+MacBook+Air%25C2%25AE+%2528Latest+Model%2529+-+13.3%2522+Display+-+Intel+Core+i5+-+4GB+Memory+-+128GB+Flash+Storage+-+Silver/1581921.p?skuId=1581921&amp;productCategoryId=pcmcat247400050001&amp;id=1219056464137"><span class="emphasized-copy short-description">Apple - MacBook Air® (Latest Model) - 13.3" Display - Intel Core i5 - 4GB Memory - 128GB Flash Storage - Silver</span></a></div></div>
+   <div class="row">
+   <div class="col-xs-12"><span class="emphasized-copy">Model: </span>&nbsp;MJVE2LL/A</div></div></div></div></div>
+  <div class="col-xs-12">
+  <form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Name:</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Address:</label>
+    <div class="col-sm-10"> 
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Credit Card:</label>
+    <div class="col-sm-10"> 
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+     <button type="button" class="btn btn-primary">Check Out</button>
+    </div>
+  </div>
+</form>
+	</div>		
       <%} else {
 			session.setAttribute("cartItems",itemsOrdered.size());
         %>
@@ -113,24 +146,8 @@ http://www.coreservlets.com/.
         // "Proceed to Checkout" button below table
 		
 	  %>
-			<div class="backform" >
-			<FORM ACTION=<%=backURL%> >
-           <BIG><LEFT>
-           <INPUT TYPE="SUBMIT" VALUE="Continue Shopping">
-           </LEFT></BIG></FORM>
-         
-			<FORM ACTION=<%= checkoutURL %>><BIG><RIGHT>
-				<INPUT TYPE="SUBMIT" VALUE="Proceed to Checkout">
-           </RIGHT></BIG></FORM>
+	
 		   
-		   
-		   
-		   </div>
-		   
-		   <div class="footer">
-				
-				<p>Sports4Hawks powered by Sushil Ronak Rohit</p>
-				
-				</div>
+		 <%@include file="footer.jsp"%>
       </BODY></HTML>
     
