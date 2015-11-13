@@ -1,28 +1,22 @@
 <%@include file="header2.jsp" %>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
+<script src="themes/1/js-image-slider.js" type="text/javascript"></script>
+ 
+<link href="css/generic.css" rel="stylesheet" type="text/css" />
+
 
 <br>
 		
-			<TABLE BORDER="0" WIDTH="100%">
-			<tr>
-				<td ALIGN="LEFT" WIDTH="10%">
-				
-				<H3><img src="images/products.png" alt="" /></H3>
-				<a href="Products.jsp?category=casuals" ><img src="images/casuals.png" alt="" /></a>
-				<br><br>
-				<a href="Products.jsp?category=Equipments" ><img src="images/equipe.png" alt="" /></a>
-				<br><br>
-				<a href="Products.jsp?category=footwear" ><img src="images/footwear.png" alt="" /></a>
-				<br><br>
-				<a href="Products.jsp?category=men" ><img src="images/men.png" alt="" /></a>
-				<br><br>
-				<a href="Products.jsp?category=women" ><img src="images/women.png" alt="" /></a>
-				<br><br>
+			
 							
 				</td>
 		<td>
+				<div id="container">
 				<div id="wrapper">
+				<div id="sliderFrame">
         <form action="/sports4hawks/ValidateServlet" method="post" name="loginForm" >
-            <fieldset>
+            <fieldset align="center">
                 <legend>Login Form</legend>
                 <div>
 					<div class="small">User: </div>
@@ -34,6 +28,13 @@
                 </div>
                 
                 <input type="Submit" value="LogIn">
+                <div id="slider">
+					<a href="images/mainpage/imagel1.jpg" target="_blank">
+					<img src="images/mainpage/imagel1.jpg" alt="Welcome to elexTore.com" />
+					</a>
+					<img src="images/mainpage/imagel2.jpg" alt="" />
+					<img src="images/mainpage/imagel3.jpg" alt="" />
+					</div>
             </fieldset>    
         </form>
     </div>
