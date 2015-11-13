@@ -4,13 +4,25 @@
 <div class="well">
     <div class="row">
             <div class="col-lg-2">Filter
-            	<div class="input-group">
-      <span class="input-group-addon">
-        <input type="checkbox" aria-label="...">
-        Brand
-      </span>
-     
-    </div><!-- /input-group -->
+            	
+    			<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			Brand
+      				</span>   
+    			</div>
+    			<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			Brand1
+      				</span>   
+    			</div>
+    			<div class="input-group">
+      				<span class="input-group-addon">
+       				<input type="checkbox" aria-label="...">
+        			Brand2
+      				</span>   
+    			</div>
             </div>
              <div class="col-lg-10" style="border-left:2px solid grey">
              	<h3 >Products</p>
