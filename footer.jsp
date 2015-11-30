@@ -1,4 +1,4 @@
-<%@page import="mybean.UserBean" %>
+<%@page import="beans.UserBean" %>
 <html>
 <TITLE>elexTore</TITLE>
 

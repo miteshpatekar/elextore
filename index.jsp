@@ -1,32 +1,7 @@
-
-<%@page import="mybean.CatalogItem" %>
-<%@page import="myclasses.Catalog" %>
+<%@page import="beans.UserBean" %>
 <%@page import="java.util.*" %>
 <%@page import="java.io.*" %>
 
-<%
-
-	
-	String filePath=request.getRealPath("Data/ProductCatalog.txt");
-	Catalog catalog= new Catalog();
-	HashMap catalogItems= catalog.getProductsItems();
-	try
-      {
-		 File f=new File(filePath);  
-		 
-		FileOutputStream fileOut =new FileOutputStream(f);
-		ObjectOutputStream fout = new ObjectOutputStream(fileOut);
-        fout.writeObject(catalogItems);
-         fout.close();
-         fileOut.close();
-         System.out.printf("Serialized data is saved in file ");
-      }catch(IOException i)
-      {
-          i.printStackTrace();
-      }
-	
-	
-%>
 
 <%@include file="Header.jsp"%>
 

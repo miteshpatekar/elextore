@@ -4,30 +4,41 @@
 <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
  
 <link href="css/generic.css" rel="stylesheet" type="text/css" />
-
-
+<%
+String error="";
+try{
+	
+		error = session.getAttribute("error").toString();
+		if (error == null){
+			//session.setAttribute("cartItems","0");
+			//cartItems = "0";
+		}
+	}
+	catch(Exception e){
+		//cartItems = "0";
+	}
+%>
 <br>
-		
-			
-							
+
 				</td>
 		<td>
 				<div id="container">
 				<div id="wrapper">
 				<div id="sliderFrame">
-        <form action="/sports4hawks/ValidateServlet" method="post" name="loginForm" >
+        <form action="SignIn" method="get" name="loginForm" >
             <fieldset align="center">
                 <legend>Login Form</legend>
                 <div>
 					<div class="small">User: </div>
-                    <input type="text" name="user_name" placeholder="Enter Email address"/>
+                    <input type="text" name="email" placeholder="Enter Email address"/>
                 </div>
                 <div>
 					<div class="small">Password: </div>
                     <input type="password" name="password" placeholder="Password"/>
                 </div>
                 
-                <input type="Submit" value="LogIn">
+                <input type="submit" value="Sign In">
+                <h4 style="color:red"><%=error%></h4>
                 <div id="slider">
 					<a href="images/mainpage/imagel1.jpg" target="_blank">
 					<img src="images/mainpage/imagel1.jpg" alt="Welcome to elexTore.com" />

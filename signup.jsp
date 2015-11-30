@@ -47,22 +47,35 @@ function validateInput(){
 }
 
 </script>
+	<%
+String error="";
+try{
 	
+		error = session.getAttribute("error").toString();
+		if (error == null){
+			//session.setAttribute("cartItems","0");
+			//cartItems = "0";
+		}
+	}
+	catch(Exception e){
+		//cartItems = "0";
+	}
+%>
 	<br>
 				<div id="container">
 				<div id="wrapper">
 				<div id="sliderFrame">
 
-        <form action="/sports4hawks/AddUser" name="signupForm" >
+        <form action="SignUp" method="get" name="signupForm" >
             <fieldset align="center">
                 <legend>Register Form</legend>
                 <div>
 					<div class="small">First Name: </div>
-                    <input type="text" name="first_name" placeholder="First Name"/>
+                    <input type="text" name="fName" placeholder="First Name"/>
                 </div>
                 <div>
 					<div class="small">Last Name: </div>
-                    <input type="text" name="last_name" placeholder="Last Name "/>
+                    <input type="text" name="lName" placeholder="Last Name "/>
                 </div>
                 <div>
 					<div class="small">Password: </div>
@@ -73,7 +86,8 @@ function validateInput(){
                     <input type="text" name="email" placeholder="Email"/>
                 </div>
                 <div> 
-                <input type="button" name="button" value="Register" onclick="return validateInput()"  />
+                <input type="submit" name="button" value="Register" onclick="return validateInput()"  />
+                <h4 style="color:red"><%=error%></h4>
                 <div id="slider">
 					<a href="images/mainpage/image1.jpg" target="_blank">
 					<img src="images/mainpage/images1.jpg" alt="Welcome to elexTore.com" />

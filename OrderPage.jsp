@@ -97,6 +97,16 @@ http://www.coreservlets.com/.
     <div class="col-sm-10"> 
       <input type="password" class="form-control" id="pwd" placeholder="Enter credit card">
     </div>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Date:</label>
+    <div class="col-sm-10"> 
+      <input type="password" class="form-control" id="pwd" placeholder="Enter Date">
+    </div>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">CVV:</label>
+    <div class="col-sm-10"> 
+      <input type="password" class="form-control" id="pwd" placeholder="Enter CVV">
+    </div>
   </div>
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">

@@ -1,4 +1,4 @@
-<%@page import="mybean.UserBean" %>
+<%@page import="beans.UserBean" %>
 <html>
 <TITLE>elexTore</TITLE>
 <head>
@@ -51,13 +51,13 @@
 				<ul>
 					<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
 						<%if(userName.equals("Guest")){%>
-					<li><a href="login.jsp" class="acolor" style="color:#30A2DE">Log In</a></li>
+					<li><a href="signin.jsp" class="acolor" style="color:#30A2DE">Log In</a></li>
 					<%}%>
 					<li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li>
 					<li><a href="viewOrders.jsp" class="acolor" style="color:#30A2DE">Your Orders</a></li>
 					<li><b><i><a style="color:#1F4255"  href="">Welcome <%= userName%></a></i></b></li>
 					<%if(!(userName.equals("Guest"))){%>
-					<li><a href="/elextore/LogOutServlet" class="acolor" style="color:#30A2DE">Log Out</a></li>
+					<li><a href="LogOutServlet" class="acolor" style="color:#30A2DE">Log Out</a></li>
 					<%}%>
 				</ul>
 			</div>

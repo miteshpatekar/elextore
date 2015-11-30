@@ -152,7 +152,7 @@
             <table>
 			<tr>
 			<td>
-			<img src="\elextore\images\dellinspiron3542.jpg"  width="200" height="200"/>
+			<img src="images/dellinspiron3542.jpg"  width="200" height="200"/>
 			</td>
 			</tr>
 			<tr><td><a>Dell Inspiron 3542 Notebook</a></td></tr>
@@ -165,7 +165,7 @@
             <table>
 			<tr>
 			<td>
-			<img src="\elextore\images\delllatitude14.jpg"  width="200" height="200"/>
+			<img src="images/delllatitude14.jpg"  width="200" height="200"/>
 			</td>
 			</tr>
 			<tr><td><a>Dell Latitude 14</></td></tr>
@@ -179,7 +179,7 @@
             <table>
 			<tr>
 			<td>
-			<img src="\elextore\images\dellinspiron13 7000series.jpg"  width="200" height="200"/>
+			<img src="images/dellinspiron13 7000series.jpg"  width="200" height="200"/>
 			</td>
 			</tr>
 			<tr><td><a>Dell Inspiron 13 7000 series</a></td></tr>
@@ -192,7 +192,7 @@
             <table>
 			<tr>
 			<td>
-			<img src="\elextore\images\dellalienware15.jpg"  width="200" height="200"/>
+			<img src="/images/dellalienware15.jpg"  width="200" height="200"/>
 			</td>
 			</tr>
 			<tr><td><a>Alienware 15</a></td></tr>
@@ -205,7 +205,7 @@
             <table>
 			<tr>
 			<td>
-			<img src="\elextore\images\dellprecisionM3800.jpg"  width="200" height="200"/>
+			<img src="images/dellprecisionM3800.jpg"  width="200" height="200"/>
 			</td>
 			</tr>
 			<tr><td><a>Dell Precision M3800</a></td></tr>
@@ -218,7 +218,7 @@
             <table>
 			<tr>
 			<td>
-			<img src="\elextore\images\dellxps15.jpg"  width="200" height="200"/>
+			<img src="images\dellxps15.jpg"  width="200" height="200"/>
 			</td>
 			</tr>
 			<tr><td><a>Dell XPS 15 Touch</a></td></tr>

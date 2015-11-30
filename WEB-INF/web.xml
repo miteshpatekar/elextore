@@ -43,14 +43,23 @@
 	
 	
 	<servlet>
-        <servlet-name>AddUser</servlet-name>
-        <servlet-class>AddUser</servlet-class>
+        <servlet-name>SignUp</servlet-name>
+        <servlet-class>SignUp</servlet-class>
     </servlet>
  <servlet-mapping>
-        <servlet-name>AddUser</servlet-name>
-        <url-pattern>/AddUser</url-pattern>
+        <servlet-name>SignUp</servlet-name>
+        <url-pattern>/SignUp</url-pattern>
     </servlet-mapping>
 	
+  <servlet>
+        <servlet-name>SignIn</servlet-name>
+        <servlet-class>SignIn</servlet-class>
+    </servlet>
+ <servlet-mapping>
+        <servlet-name>SignIn</servlet-name>
+        <url-pattern>/SignIn</url-pattern>
+    </servlet-mapping>
+
 	<servlet>
         <servlet-name>LogOutServlet</servlet-name>
         <servlet-class>LogOutServlet</servlet-class>
