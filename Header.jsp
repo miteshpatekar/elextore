@@ -1,3 +1,30 @@
+
+<%@ page import="java.util.Date" %>
+<%@page import="java.io.*"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="javax.servlet.annotation.WebServlet"%>
+<%@page import="javax.servlet.http.HttpServlet"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
+<%@page import="javax.servlet.http.HttpServletResponse"%>
+<%@page import="com.mongodb.MongoClient"%>
+<%@page import="com.mongodb.MongoException"%>
+<%@page import="com.mongodb.WriteConcern"%>
+<%@page import="com.mongodb.DB"%>
+<%@page import="com.mongodb.DBCollection"%>
+<%@page import="com.mongodb.BasicDBObject"%>
+<%@page import="com.mongodb.DBObject"%>
+<%@page import="com.mongodb.DBCursor"%>
+<%@page import="com.mongodb.ServerAddress"%>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Set"%>
+<%@page import="javax.servlet.*"%>
+<%@page import="javax.servlet.http.*"%>
 <html>
 <TITLE>elexTore</TITLE>
 <head>
@@ -30,6 +57,7 @@
 	}
 	UserBean userBean=null;
 	String userName="";
+	String role="";
 	try{
 		userBean = (UserBean)session.getAttribute("userbean");
 
@@ -38,6 +66,7 @@
 		}
 		else{
 			userName=userBean.getFirstName();
+			role=userBean.getRole();
 			
 		}
 	}
@@ -60,7 +89,16 @@
 						<%if(userName.equals("Guest")){%>
 					<li><a href="signin.jsp" class="acolor" style="color:#30A2DE">Sign In</a></li>
 					<%}%>
+
 					<li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li>
+					<%if(role.equals("storeManager")){
+					%>
+					<li><a href="viewProducts.jsp" class="acolor" style="color:#30A2DE">Products</a></li>
+				<%}%>
+				<%if(role.equals("salesMan")){
+					%>
+					<li><a href="viewAllOrders.jsp" class="acolor" style="color:#30A2DE">All Orders</a></li>
+				<%}%>
 					<li><a href="viewOrders.jsp" class="acolor" style="color:#30A2DE">Your Orders</a></li>
 					<li><b><i><a style="color:#1F4255"  href="">Welcome <%= userName%></a></i></b></li>
 					<%if(!(userName.equals("Guest"))){%>

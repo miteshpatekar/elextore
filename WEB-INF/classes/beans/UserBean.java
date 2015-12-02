@@ -10,6 +10,7 @@ public class UserBean{
 	private String email;
   private String role;
 	private String shippingAddress;
+  private Boolean isActive;
 
  public String getId() {
     return(id);
@@ -62,5 +63,12 @@ public String getPassword() {
   }
 public String getShippingAddress() {
     return(shippingAddress);
+  }
+
+   public void setIsActive(Boolean isActive) {
+    this.isActive = isActive;
+  }
+public Boolean getIsActive() {
+    return(isActive);
   }
 }
