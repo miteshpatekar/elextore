@@ -12,6 +12,7 @@
 <%@page import="com.mongodb.DB"%>
 <%@page import="com.mongodb.DBCollection"%>
 <%@page import="com.mongodb.BasicDBObject"%>
+<%@page import="com.mongodb.BasicDBList"%>
 <%@page import="com.mongodb.DBObject"%>
 <%@page import="com.mongodb.DBCursor"%>
 <%@page import="com.mongodb.ServerAddress"%>
@@ -25,6 +26,11 @@
 <%@page import="java.util.Set"%>
 <%@page import="javax.servlet.*"%>
 <%@page import="javax.servlet.http.*"%>
+<%@page import="org.bson.types.ObjectId"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="beans.*"%>
 <html>
 <TITLE>elexTore</TITLE>
 <head>
@@ -42,18 +48,22 @@
 
 <body onload='init()'; background="images/mainpage/image2.jpg">
 	<%
-	String cartItems="";
-	
+	int cartItems=0;
+	HttpSession s=request.getSession();
+	 
 	try{
+
 	String error=session.getAttribute("error").toString();
-		cartItems = session.getAttribute("cartItems").toString();
-		if (cartItems == null){
-			session.setAttribute("cartItems","0");
-			cartItems = "0";
-		}
+	List<Cart> list= (List<Cart>) s.getAttribute("list");
+	cartItems=list.size();
+		//cartItems = session.getAttribute("cartItems").toString();
+		//if (cartItems == null){
+		//	session.setAttribute("cartItems","0");
+		//	cartItems = "0";
+		//}
 	}
 	catch(Exception e){
-		cartItems = "0";
+		cartItems = 0;
 	}
 	UserBean userBean=null;
 	String userName="";
@@ -71,7 +81,7 @@
 		}
 	}
 	catch(Exception e){
-		cartItems = "0";
+		cartItems = 0;
 	}
 	
 	%>
@@ -85,21 +95,22 @@
 			</div>
 			<div class="account_desc">
 				<ul>
-					<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
+					
 						<%if(userName.equals("Guest")){%>
+						<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
 					<li><a href="signin.jsp" class="acolor" style="color:#30A2DE">Sign In</a></li>
 					<%}%>
 
-					<li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li>
+					<!-- <li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li> -->
 					<%if(role.equals("storeManager")){
 					%>
-					<li><a href="viewProducts.jsp" class="acolor" style="color:#30A2DE">Products</a></li>
+					<li><a href="productsAdmin.jsp" class="acolor" style="color:#30A2DE">Products</a></li>
 				<%}%>
 				<%if(role.equals("salesMan")){
 					%>
 					<li><a href="viewAllOrders.jsp" class="acolor" style="color:#30A2DE">All Orders</a></li>
 				<%}%>
-					<li><a href="viewOrders.jsp" class="acolor" style="color:#30A2DE">Your Orders</a></li>
+					<li><a href="myOrders.jsp" class="acolor" style="color:#30A2DE">My Orders</a></li>
 					<li><b><i><a style="color:#1F4255"  href="">Welcome <%= userName%></a></i></b></li>
 					<%if(!(userName.equals("Guest"))){%>
 					<li><a href="LogOutServlet" class="acolor" style="color:#30A2DE">Log Out</a></li>
@@ -108,24 +119,26 @@
 			</div>
 			</div>
 		<div class="header_top">
+		<a href="index.jsp">
 			<div class="logo">
 
 			</div>
+			</a>
 			<div class="links">
 			<ul></ul>
 				
-				<% if(cartItems.equals("0")) { %>
+				<% if(cartItems==0) { %>
 				
-				<div class="cart" onclick="window.location ='/elextore/OrderPage.jsp';">
+				<div class="cart" onclick="window.location ='cart.jsp';">
 				
 				<% } else { %>
 				
-				<div class="cart_full" onclick="window.location ='/elextore/OrderPage.jsp';">
+				<div class="cart_full" onclick="window.location ='cart.jsp';">
 				
 				<% } %>
 				
 				</div>
-				<p>2</p>
+				<p><%=cartItems%></p>
 			
 			</div>
 		</div>
@@ -134,17 +147,13 @@
 
 		<div class="navigatation">
 			<ul>
-				<li><a href="/elextore/index.jsp">Home</a></li>
+				<li><a href="index.jsp">Home</a></li>
 				
 
 				<li><a href="aboutus.jsp">About Us</a></li>
 
-				<li><a href="/elextore/contactus.jsp">Contact Us</a></li>
-			</ul>
-			
-			
-			
-			
+				<li><a href="contactus.jsp">Contact Us</a></li>
+			</ul>		
 			
 			<div class="search" style="right:50px">
 			
@@ -171,7 +180,7 @@
 				<td ALIGN="LEFT" WIDTH="23%" style="padding-left:1px;">
 				
 				<h2 style="height: 44px; width: 200px;">Product Categories</h2>
-				<a href="Products.jsp?category=casuals" class="products" >Appliances</a>
+				<a href="Products.jsp?category=Games" class="products" >Appliances</a>
 				<br>
 				<a href="Products.jsp?category=Equipments" class="products" >TV & Home Theater</a>
 				<br>
@@ -205,6 +214,6 @@
 			
 			
 				</div>
-				<h4>akhdaksh</h4>
+				
 
 </body>			

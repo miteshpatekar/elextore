@@ -1,5 +1,21 @@
  
 <%@include file="Header.jsp"%>
+
+<%
+   String productName = "";
+    String imageLocation = " ";
+    int productPrice = 0;
+  
+          MongoClient mongo = new MongoClient("52.11.50.218", 27017);
+                        
+            DB db = mongo.getDB("Elextore");
+            DBCollection collection = db.getCollection("products");
+            BasicDBObject whereQuery = new BasicDBObject();
+            String category=request.getParameter("category");
+            
+            DBCursor cursor = collection.find();
+%>
+
 <body>
 <div class="well">
     <div class="row">
@@ -96,19 +112,36 @@
 			</div>
 			</div>
              <div class="col-lg-10" style="border-left:2px solid grey">
-             	<h3 >Products</p>
+             	<h3 >Products <%=category%></p>
 
              		<div class="itemgrid">
 				<h2>Featured Products</h2>
 				
 				<div class="items" style="margin-left:20px">
-				<ul>				
+				<ul>		
+         <%
+     while(cursor.hasNext()) {
+
+                BasicDBObject obj = (BasicDBObject) cursor.next();
+
+           
+                    Object orderId=(Object)obj.get("_id");
+             //  System.out.println(obj.get("Manufacturer")+"----");
+               String str=(String)obj.get("category");
+           if(str.equals(category))
+           {
+ 
+
+%>
+		<a href='productDetails.jsp?productId=<%=orderId.toString()%>'>
                 <li>
-                <img src="images/dellinspiron3542.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Dell Inspiron 3542</h4>
-                <p><b>$800 <a href="/elextore/OrderPage.jsp?itemID=4"> Add To Cart </a></b></p>
+                <img src='<%=obj.get("imagePath")%>' alt="No Image found for this product" width="250" height="238">
+                <h4><%=obj.get("name")%></h4>
+                <p><b>$<%=obj.get("price")%> <a href='cart.jsp?productId=<%=orderId.toString()%>'> Add To Cart </a></b></p>
                 </li>
-                <li>
+                </a>
+                <%}%>
+               <!--  <li>
                 <img src="images/dellinspiron13 7000series.jpg" alt="No Image found for this product" width="250" height="238">
                 <h4>Dell Inspiron13 7000series</h4>
                 <p><b>$500 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
@@ -142,8 +175,8 @@
                 <img src="images/delllatitude14.jpg" alt="No Image found for this product" width="250" height="238">
                 <h4>Dell Latitude</h4>
                 <p><b>$599 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                
+                </li> -->
+                <% }%>
 				</ul>
 				
 				</div>

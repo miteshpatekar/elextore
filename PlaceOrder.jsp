@@ -4,12 +4,12 @@
 
 
 <H1 ALIGN="CENTER">Add your personal details for this order</H1>
-<FORM ACTION="/sports4hawks/Checkout.jsp" 
-      METHOD="POST">
+<FORM ACTION="submitOrder.jsp" 
+      METHOD="Get">
   <HR>
   <TABLE id="order_form">
   <%
-  if(userName.equals("Guest") || usrBean==null){
+  if(userName.equals("Guest") || userBean==null){
   %>
   
 	<TR><TD>First Name:</TD><TD> <INPUT TYPE="TEXT" NAME="firstName"></TD></TR>
@@ -21,29 +21,18 @@
 	
 	%>
 	
-	<TR><TD>First Name:</TD><TD> <INPUT TYPE="TEXT" NAME="firstName" value=<%=usrBean.getFirstName()%>></TD></TR>
-	<TR><TD>Last Name:</TD><TD> <INPUT TYPE="TEXT" NAME="lastName" value=<%=usrBean.getLastName()%>></TD></TR>
-	<TR><TD>Email Id:</TD><TD> <INPUT TYPE="TEXT" NAME="email" value=<%=usrBean.getEmail() %>></TD></TR>
+	<TR><TD>First Name:</TD><TD> <INPUT TYPE="TEXT" NAME="firstName" value=<%=userBean.getFirstName()%>></TD></TR>
+	<TR><TD>Last Name:</TD><TD> <INPUT TYPE="TEXT" NAME="lastName" value=<%=userBean.getLastName()%>></TD></TR>
+	<TR><TD>Email Id:</TD><TD> <INPUT TYPE="TEXT" NAME="email" value=<%=userBean.getEmail() %>></TD></TR>
 	
-	<TR><TD>Shipping Address:</TD><TD><TEXTAREA NAME="address" ROWS='3' COLS='40' ><%=usrBean.getShippingAddress()%></TEXTAREA></TR>
+	<TR><TD>Shipping Address:</TD><TD><TEXTAREA NAME="address" ROWS='3' COLS='40' ><%=userBean.getShippingAddress()%></TEXTAREA></TR>
 	<%}%>
-	<TR><TD>Credit Card:</TD><BR><TD> 
-  
-  
-  &nbsp;&nbsp;<INPUT TYPE="RADIO" NAME="cardType"
-                     VALUE="Visa">Visa<BR>
-  &nbsp;&nbsp;<INPUT TYPE="RADIO" NAME="cardType"
-                     VALUE="MasterCard">MasterCard<BR>
-  &nbsp;&nbsp;<INPUT TYPE="RADIO" NAME="cardType"
-                     VALUE="Amex">American Express<BR>
-  &nbsp;&nbsp;<INPUT TYPE="RADIO" NAME="cardType"
-                     VALUE="Discover">Discover<BR>
-  &nbsp;&nbsp;<INPUT TYPE="RADIO" NAME="cardType"
-                     VALUE="Java SmartCard">Java SmartCard<BR>
-					 </TR>
+	
   <TR><TD>Credit Card Number:</TD><TD><INPUT TYPE="PASSWORD" NAME="cardNum"></TD></TR>
-  <TR><TD>Repeat Credit Card Number:</TD><TD><INPUT TYPE="PASSWORD" NAME="cardNum"></TD></TR>
+  <TR><TD>Date:</TD><TD><INPUT TYPE="text" NAME="validity"></TD></TR>
+  <TR><TD>CCV:</TD><TD><INPUT TYPE="PASSWORD" NAME="ccv"></TD></TR>
   <TR></TR><TR></TR><TR></TR><TR></TR><TR></TR><TR></TR><TR></TR><TR></TR>
-  <TD></TD><TD><INPUT align='right' TYPE="SUBMIT" VALUE="Submit Order"></TD></TABLE>
+  <TD></TD><TD><INPUT align='right' class="btn btn-success" TYPE="SUBMIT" VALUE="Submit Order"></TD></TABLE>
 </FORM>
-</BODY></HTML>
+</BODY>
+<%@include file="footer.jsp" %>
