@@ -19,11 +19,11 @@ function validateInput(){
 		var atpos = x.indexOf("@");
 		var dotpos = x.lastIndexOf(".");
 		
-	if(document.signupForm.first_name.value==""){
+	if(document.signupForm.fName.value==""){
 		alert("Please Enter First Name: ");
 		return false;
 	}
-	else if(document.signupForm.last_name.value==""){
+	else if(document.signupForm.lName.value==""){
 		alert("Please Enter Last Name: ");
 		return false;	
 	}
@@ -66,7 +66,7 @@ try{
 				<div id="wrapper">
 				<div id="sliderFrame">
 
-        <form action="SignUp" method="get" name="signupForm" >
+        <form action="SignUp" method="POST" name="signupForm" onsubmit="return validateInfo()">
             <fieldset align="center">
                 <legend>Register Form</legend>
                 <div>
@@ -87,7 +87,6 @@ try{
                 </div>
                 <div> 
                 <input type="submit" name="button" value="Register" onclick="return validateInput()"  />
-                <h4 style="color:red"><%=error%></h4>
                 <div id="slider">
 					<a href="images/mainpage/image1.jpg" target="_blank">
 					<img src="images/mainpage/images1.jpg" alt="Welcome to elexTore.com" />
