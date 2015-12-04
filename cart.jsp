@@ -26,7 +26,10 @@
         if(list==null){
                 list =new ArrayList<>();
             }
+
         String deleteCartItem=request.getParameter("deleteCartItem");
+        String updateCartItem=request.getParameter("updateCartItem");
+
         if(from==null){
             if(deleteCartItem==null){
                 productId=   request.getParameter("productId");
@@ -46,13 +49,40 @@
                             if(c.getId().equals(cartId))
                             {
                                 list.remove(i);
-                                total=total-c.getPrice();
+                                total=total-(c.getPrice()*c.getQuantity());
+                                s.setAttribute("total",total);
                             }
                         }
 
             }
         }
+         if(updateCartItem!=null)
+         {
+            if(updateCartItem.equals("updateCartItem"))
+            {
+                    System.out.println("Update");
+                    String cartId= request.getParameter("cartId");                          
+                    String newQuantity= request.getParameter("newQuantity");  
+                    
+                    total=0;
+                        for(int i=0;i<list.size();i++)
+                        {
+                            Cart c=list.get(i);                        
+                            
+                            if(c.getId().equals(cartId))
+                            {
+                                int q=Integer.parseInt(newQuantity);
+                                c.setQuantity(q);
+                                total=total+(c.getPrice()*q);
+                               
+                            }else{
+                                total=total+c.getPrice()*c.getQuantity();
+                            }
+                             s.setAttribute("total",total);
+                        }
 
+            }
+        }
 
             DB db = mongo.getDB("Elextore");
             DBCollection collection = db.getCollection("products");
@@ -89,6 +119,7 @@
                 }
                 }
             }
+            total=(Integer)s.getAttribute("total");
                   s.setAttribute("cartCount",list.size());
                   %>
 
@@ -115,7 +146,43 @@
                         <tr>
                             <td><%=cart.getName()%></td>
                             <td><img src=' <%=cart.getImageUrl()%>' alt="No Image found for this product" width="250" height="238"></td>
-                            <td><input type="text" value="1"></input></td>
+                            <td>
+                            <form action="cart.jsp" method="GET">
+                                <div class="form-group">
+                                <!-- <label for="sel1">Select list:</label> -->
+                                <input type='hidden' name = 'cartId' value = '<%=cart.getId()%>'>
+                                <input type='hidden' name = 'updateCartItem' value = 'updateCartItem'>
+                                <select class="form-control" id="myselect" name="newQuantity" onchange="this.form.submit()">
+                                  <% if(cart.getQuantity()==1) {%> <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option> <%}%>
+                                  <% if(cart.getQuantity()==2) {%><option value="1" selected>1</option> 
+                                                            <option value="2" selected>2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option> <%}%>
+                                  <% if(cart.getQuantity()==3) {%> <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3" selected>3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option> <%}%>
+                                  <% if(cart.getQuantity()==4) {%> <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4" selected>4</option>
+                                                    <option value="5">5</option> <%}%>
+                                  <% if(cart.getQuantity()==5) {%> <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5" selected>5</option> <%}%>
+                                   
+                                </select>
+                                </div>
+                            </form>
+                            </td>
                             <td>$<%=cart.getPrice()%></td>
                             <td>
                             <form class = 'submit-button' method = 'get' action = 'cart.jsp'>
