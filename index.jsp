@@ -74,7 +74,7 @@ public void setAdmins()
 
 
             BasicDBObject whereQuery = new BasicDBObject();
-            whereQuery.put("username", "storeadmin");
+            whereQuery.put("email", "storemanager@elextore.com");
             DBCursor cursor = users.find(whereQuery);
             int flag1=0;
             while(cursor.hasNext()) {
@@ -97,7 +97,7 @@ public void setAdmins()
 
             Map<String, Object> commandArguments1 = new BasicDBObject();
             BasicDBObject whereQuery1 = new BasicDBObject();
-            whereQuery1.put("username", "salesadmin");
+            whereQuery1.put("email", "salesman@elextore.com");
             DBCursor cursor1 = users.find(whereQuery1);
             int flag2=0;
             while(cursor1.hasNext()) {

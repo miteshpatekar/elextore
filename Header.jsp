@@ -49,21 +49,22 @@
 <body onload='init()'; background="images/mainpage/image2.jpg">
 	<%
 	int cartItems=0;
-	HttpSession s=request.getSession();
-	 
+	//HttpSession session=request.getSession();
+	 List<Cart> list=null; 
 	try{
-
+	HttpSession s=request.getSession();
+list= (List<Cart>) s.getAttribute("list");
 	String error=session.getAttribute("error").toString();
-	List<Cart> list= (List<Cart>) s.getAttribute("list");
-	cartItems=list.size();
-		//cartItems = session.getAttribute("cartItems").toString();
+	
+	//cartItems=list.size();
+		cartItems = (Integer)s.getAttribute("cartCount");
 		//if (cartItems == null){
 		//	session.setAttribute("cartItems","0");
 		//	cartItems = "0";
 		//}
 	}
 	catch(Exception e){
-		cartItems = 0;
+		//cartItems = 0;
 	}
 	UserBean userBean=null;
 	String userName="";
@@ -81,7 +82,7 @@
 		}
 	}
 	catch(Exception e){
-		cartItems = 0;
+		//cartItems = 0;
 	}
 	
 	%>

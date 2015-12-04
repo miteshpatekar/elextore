@@ -15,8 +15,14 @@
         {
             response.sendRedirect("signin.jsp");
         }
-        List<Cart> list= (List<Cart>) s.getAttribute("list");
+        try{
+         list= (List<Cart>) s.getAttribute("list");
          total=(Integer)s.getAttribute("total");
+     }catch(Exception e)
+     {
+     total=0;
+ }
+       
         if(list==null){
                 list =new ArrayList<>();
             }
@@ -83,7 +89,7 @@
                 }
                 }
             }
-                  
+                  s.setAttribute("cartCount",list.size());
                   %>
 
 <body>

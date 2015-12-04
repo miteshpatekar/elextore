@@ -9,7 +9,7 @@
 
           HttpSession s=request.getSession();
                             
-            List<Cart> list= (List<Cart>) s.getAttribute("list");
+           list= (List<Cart>) s.getAttribute("list");
             int total=(Integer)s.getAttribute("total");
            // Map<String, Object> products = new BasicDBObject();
             List<String> cartList = new ArrayList<>();
