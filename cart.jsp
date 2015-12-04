@@ -24,7 +24,7 @@
  }
        
         if(list==null){
-                list =new ArrayList<>();
+                list =new ArrayList();
             }
 
         String deleteCartItem=request.getParameter("deleteCartItem");
@@ -98,7 +98,7 @@
 
                     String id=productIdm.toString();
                     String name=(String)obj.get("name");
-                    int price=(int)obj.get("price");
+                    int price=(Integer)obj.get("price");
                     String imageUrl=(String)obj.get("imageUrl");
                     //System.out.println("^^^^^****"+id+name+price+productId);
                     if(from==null){
@@ -174,7 +174,7 @@
                                                     <option value="4" selected>4</option>
                                                     <option value="5">5</option> <%}%>
                                   <% if(cart.getQuantity()==5) {%> <option value="1">1</option>
-                                    <option value="2">2</option>
+                                                <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5" selected>5</option> <%}%>
