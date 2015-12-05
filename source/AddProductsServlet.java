@@ -68,7 +68,7 @@ public class AddProductsServlet extends HttpServlet {
             newDocument.append("$set", new BasicDBObject().append("isActive", false));
             BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
             products.update(searchQuery, newDocument);
-            request.getRequestDispatcher("addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
+            request.getRequestDispatcher("/addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
         }
         else if(buttonValue != null && buttonValue.equals("Update Product")){
             String productId = request.getParameter("productId");
@@ -85,14 +85,14 @@ public class AddProductsServlet extends HttpServlet {
             BasicDBObject newDocument = new BasicDBObject();
             newDocument.append("$set", new BasicDBObject().append("name", productName));
             newDocument.append("$set", new BasicDBObject().append("retailerName", retailer));
-            newDocument.append("$set", new BasicDBObject().append("price", productPrice));
+           // newDocument.append("$set", new BasicDBObject().append("price", productPrice));
             newDocument.append("$set", new BasicDBObject().append("category", category));
             newDocument.append("$set", new BasicDBObject().append("description", productDescription));
             newDocument.append("$set", new BasicDBObject().append("isOnSale", onsaleValue));
             newDocument.append("$set", new BasicDBObject().append("rebate", rebateValue));
             BasicDBObject updateQuery = new BasicDBObject().append("_id", objid);
             updatePoducts.update(updateQuery, newDocument);
-            request.getRequestDispatcher("addProductsManager.jsp?success=Product Updated Successfully..!").forward(request, response);
+            request.getRequestDispatcher("/addProductsManager.jsp?success=Product Updated Successfully..!").forward(request, response);
         }
 
     }

@@ -40,7 +40,8 @@ public void setProducts(){
                         Product p=hmap.get(id);  
                         //commandArguments.put("Id", p.Id);
                         commandArguments.put("name", p.getName());
-                        commandArguments.put("retailerName", p.getRetailerName());
+                        commandArguments.put("retailerName", "Elextore");
+                        commandArguments.put("manufacturer", p.getManufacturer());
                         commandArguments.put("category", p.getCategory());
                         commandArguments.put("price", String.valueOf(p.getPrice()));  
                          commandArguments.put("description", p.getDescription());

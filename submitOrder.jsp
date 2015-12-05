@@ -10,7 +10,7 @@
           HttpSession s=request.getSession();
                             
            list= (List<Cart>) s.getAttribute("list");
-            int total=(Integer)s.getAttribute("total");
+            String total=s.getAttribute("total").toString();
            // Map<String, Object> products = new BasicDBObject();
             List<String> cartList = new ArrayList<>();
             
@@ -33,6 +33,7 @@
             DBCollection myOrders = db.getCollection("orders");
             
             commandArguments.put("userId", userBean.getId());
+            commandArguments.put("userEmail",userBean.getEmail());
             commandArguments.put("total", total);
             //String[] roles = { "readWrite" };
             commandArguments.put("items", cartList);
@@ -70,7 +71,7 @@
            }
 
             list.clear();
-            total=0;
+            total="";
             s.setAttribute("list",list);
             s.setAttribute("total",total);
            

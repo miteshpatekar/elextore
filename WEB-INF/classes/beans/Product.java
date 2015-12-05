@@ -5,6 +5,7 @@ public class Product{
   private String id;
 	private String name;
 	private String retailerName;
+  private String manufacturer;
 	private double price;
 	private String category;
 	private String imageUrl;
@@ -13,9 +14,9 @@ public class Product{
   private Boolean isActive;
   private Boolean isOnSale;
   
-  public Product(String name,String retailerName,double price,String category,String imageUrl,String description, String rebate,Boolean isActive,Boolean isOnSale){
+  public Product(String name,String manufacturer,double price,String category,String imageUrl,String description, String rebate,Boolean isActive,Boolean isOnSale){
     this.name=name;
-    this.retailerName=retailerName;
+    this.manufacturer=manufacturer;
     this.price=price;
     this.category=category;
     this.imageUrl=imageUrl;
@@ -48,7 +49,13 @@ public class Product{
   public void setRetailerName(String retailerName) {
     this.retailerName = retailerName;
   } 
+public String getManufacturer() {
+    return(manufacturer);
+  }
 
+  public void setManufacturer(String manufacturer) {
+    this.manufacturer = manufacturer;
+  } 
    public double getPrice() {
     return(price);
   }

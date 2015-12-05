@@ -71,20 +71,48 @@ function validateInfo(){
 Boolean isCouponExist=false;
 int discount=0;
 double total1=0;
+int total=0;
 String error="";
-           HttpSession s=request.getSession();                        
-            int total=(Integer)s.getAttribute("total");
+String isCouponApplied="false";
+          
 
 			DB db = mongo.getDB("Elextore");
+			if(userBean==null)
+			{
+		request.getRequestDispatcher("/signin.jsp").forward(request, response);
+	}
 			DBCollection collection = db.getCollection("couponCodes");
 
             String couponCode=request.getParameter("couponCode");
-System.out.println("enterre@@@@@@@"+couponCode );
+//System.out.println("enterre@@@@@@@"+couponCode );
+            System.out.println("first");
        try{
+ HttpSession s=request.getSession();                        
+            //total=(Integer)s.getAttribute("total");
+            String tot=s.getAttribute("total").toString();
+             total1=Double.parseDouble(tot);
 
 
+System.out.println("asfasfasf@@@@@@@"+total+" "+total1 +" "+tot);
          if(couponCode!=null)
          {
+         System.out.println("enter"+isCouponApplied);
+			isCouponApplied=(String)s.getAttribute("isCouponApplied");
+			System.out.println("######3 "+ isCouponApplied);
+			if(isCouponApplied==null)
+			{
+				isCouponApplied="false";
+			}
+			
+			if(isCouponApplied.equals("true"))
+			{
+				System.out.println("enterfffff");
+				error="Coupon already applied !";
+			}
+			else
+			{
+System.out.println("enterfffff");
+			
             //if(couponCode.equals("couponCode"))
            // {
             	System.out.println("enterre@@@@@@@");
@@ -97,13 +125,14 @@ System.out.println("enterre@@@@@@@"+couponCode );
 				BasicDBObject obj = (BasicDBObject) cursor.next();	
 				 String discount1= obj.get("discount").toString();
 				 discount=Integer.parseInt(discount1);
-				 System.out.println("enterre@@@@@@@" + discount+" "+ total);
+				 System.out.println("enterre@@@@@@@" + discount+" "+ total1);
 				}
 
 				if(isCouponExist)
 				{
-					 total1=(total*discount)/100;
+					 total1=total1-((total1*discount)/100);
 					 System.out.println("Final$$$$$" + total1);
+					 s.setAttribute("isCouponApplied","true");
 					s.setAttribute("total",total1);
 				}
 				else
@@ -111,6 +140,8 @@ System.out.println("enterre@@@@@@@"+couponCode );
 					error="Coupon doesnt exists";
 				}
            // }
+           }
+           
         }
     }catch(Exception e)
     {}
@@ -120,9 +151,10 @@ System.out.println("enterre@@@@@@@"+couponCode );
 <BODY>
 <H1 ALIGN="CENTER">Add your personal details for this order</H1>
 <form action="PlaceOrder.jsp" method="get">
-	<h3>Total Price =<%=total%> </h3>
+	<h3>Total Price =<%=total1%> </h3>
 	<INPUT TYPE="TEXT" NAME="couponCode">
 	<input type="submit" class="btn btn-success" value="Apply Code">
+	<h4 style="color:red"><%=error%></h4>
 </form>
 
 <FORM NAME="userForm" ACTION="submitOrder.jsp" onsubmit="return validateInfo()" METHOD="POST">
