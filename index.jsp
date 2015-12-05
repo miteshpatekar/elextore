@@ -2,7 +2,7 @@
 <%@page import="java.util.*" %>
 <%@page import="java.io.*" %>
 
-<%@include file="Header.jsp"%>
+<%@include file="header2.jsp"%>
 
 <%! 
 HashMapProducts hmp;

@@ -1,4 +1,3 @@
-<%@page import="beans.UserBean" %>
 
 <%@ page import="java.util.Date" %>
 <%@page import="java.io.*"%>
@@ -13,6 +12,7 @@
 <%@page import="com.mongodb.DB"%>
 <%@page import="com.mongodb.DBCollection"%>
 <%@page import="com.mongodb.BasicDBObject"%>
+<%@page import="com.mongodb.BasicDBList"%>
 <%@page import="com.mongodb.DBObject"%>
 <%@page import="com.mongodb.DBCursor"%>
 <%@page import="com.mongodb.ServerAddress"%>
@@ -26,43 +26,64 @@
 <%@page import="java.util.Set"%>
 <%@page import="javax.servlet.*"%>
 <%@page import="javax.servlet.http.*"%>
+<%@page import="org.bson.types.ObjectId"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="beans.*"%>
+<%@page import="servlets.*"%>
 <html>
 <TITLE>elexTore</TITLE>
 <head>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
+<script src="themes/1/js-image-slider.js" type="text/javascript"></script>
+ <script type="text/javascript" src="JS/javascript.js"></script>
+
 <link href="css/generic.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap-theme.css">	
 </head>
 
 
 <body onload='init()'; background="images/mainpage/image2.jpg">
 	<%
-	String cartItems="";
+	int cartItems=0;
+	//HttpSession session=request.getSession();
+	 List<Cart> list=null; 
 	try{
-		cartItems = session.getAttribute("cartItems").toString();
-		if (cartItems == null){
-			session.setAttribute("cartItems","0");
-			cartItems = "0";
-		}
+	HttpSession s=request.getSession();
+list= (List<Cart>) s.getAttribute("list");
+	String error=session.getAttribute("error").toString();
+	
+	//cartItems=list.size();
+		cartItems = (Integer)s.getAttribute("cartCount");
+		//if (cartItems == null){
+		//	session.setAttribute("cartItems","0");
+		//	cartItems = "0";
+		//}
 	}
 	catch(Exception e){
-		cartItems = "0";
+		//cartItems = 0;
 	}
-	UserBean usrBean=null;
+	UserBean userBean=null;
 	String userName="";
+	String role="";
 	try{
-		usrBean = (UserBean)session.getAttribute("usrbean");
+		userBean = (UserBean)session.getAttribute("userbean");
 
-		if (usrBean == null){
+		if (userBean == null){
 			userName = "Guest";
 		}
 		else{
-			userName=usrBean.getFirstName();
+			userName=userBean.getFirstName();
+			role=userBean.getRole();
 			
 		}
 	}
 	catch(Exception e){
-		cartItems = "0";
+		//cartItems = 0;
 	}
 	
 	%>
@@ -76,12 +97,22 @@
 			</div>
 			<div class="account_desc">
 				<ul>
-					<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
+					
 						<%if(userName.equals("Guest")){%>
-					<li><a href="signin.jsp" class="acolor" style="color:#30A2DE">Log In</a></li>
+						<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
+					<li><a href="signin.jsp" class="acolor" style="color:#30A2DE">Sign In</a></li>
 					<%}%>
-					<li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li>
-					<li><a href="viewOrders.jsp" class="acolor" style="color:#30A2DE">Your Orders</a></li>
+
+					<!-- <li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li> -->
+					<%if(role.equals("storeManager")){
+					%>
+					<li><a href="storeManager.jsp" class="acolor" style="color:#30A2DE">Products</a></li>
+				<%}%>
+				<%if(role.equals("salesMan")){
+					%>
+					<li><a href="viewAllOrders.jsp" class="acolor" style="color:#30A2DE">All Orders</a></li>
+				<%}%>
+					<li><a href="myOrders.jsp" class="acolor" style="color:#30A2DE">My Orders</a></li>
 					<li><b><i><a style="color:#1F4255"  href="">Welcome <%= userName%></a></i></b></li>
 					<%if(!(userName.equals("Guest"))){%>
 					<li><a href="LogOutServlet" class="acolor" style="color:#30A2DE">Log Out</a></li>
@@ -90,19 +121,21 @@
 			</div>
 			</div>
 		<div class="header_top">
+		<a href="index.jsp">
 			<div class="logo">
 
 			</div>
+			</a>
 			<div class="links">
 			<ul></ul>
 				
-				<% if(cartItems.equals("0")) { %>
+				<% if(cartItems==0) { %>
 				
-				<div class="cart" onclick="window.location ='/elextore/OrderPage.jsp';">
+				<div class="cart" onclick="window.location ='cart.jsp';">
 				
 				<% } else { %>
 				
-				<div class="cart_full" onclick="window.location ='/elextore/OrderPage.jsp';">
+				<div class="cart_full" onclick="window.location ='cart.jsp';">
 				
 				<% } %>
 				
@@ -116,6 +149,7 @@
 
 		<div class="navigatation">
 			<ul>
+
 
 			<div class="dropdown">
   			<button onclick="myFunction()" class="dropbtn">Shop by Categories</button>
@@ -149,30 +183,21 @@
 	</script>
 
 </div>
-				<li><a href="/elextore/index.jsp">Home</a></li>
+				<li><a href="index.jsp">Home</a></li>
 				
 
 				<li><a href="aboutus.jsp">About Us</a></li>
 
-				<li><a href="/elextore/contactus.jsp">Contact Us</a></li>
-			</ul>
+				<li><a href="contactus.jsp">Contact Us</a></li>
+				
+
+				<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
+						
+			</ul>		
 			
 			
-			
-			
-			
-			<div class="search" style="right:50px">
-			
-			<div class="right-inner-addon " >
-    <i class="icon-search"></i>
-    <input type="search"
-           class="form-control" 
-           placeholder="Search" />
-           <button>search</button>	
-          
-</div>
-		 		
-			</div>
 
 
 <div class="search" style="float:right">
@@ -180,7 +205,37 @@
 
 
 		</div>
+
+		<div>
+		<TABLE BORDER="0" WIDTH="100%">
+			<tr>
+				<td ALIGN="LEFT" WIDTH="100%">
+				
+				<img src="images/mainpage/save25.jpg" style="width:410px; height:437px;"></img>
+							
+				</td>
+
+				<td ALIGN="center" WIDTH="80%">
+				<div id="sliderFrame">
+
+				
+					<div id="slider">
+					<a href="images/mainpage/image1.jpg" target="_blank">
+					<img src="images/mainpage/image1.jpg" alt="Welcome to elexTore.com" />
+					</a>
+					<img src="images/mainpage/image2.jpg" alt="" />
+					<img src="images/mainpage/image3.jpg" alt="" />
+					</div>
+
+
 		</div>
-		</div>
-		</body>
-		</html>
+		<br><br>
+		</td>
+		</tr>
+		</TABLE>	
+			
+			
+				</div>
+				
+
+</body>			

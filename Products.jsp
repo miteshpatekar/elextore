@@ -1,6 +1,12 @@
  
 <%@include file="Header.jsp"%>
+<html>
+<TITLE>elexTore</TITLE>
+<head>
 
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap-3.3.5-dist/css">
 <%
    String productName = "";
     String imageLocation = " ";
@@ -17,9 +23,9 @@
 %>
 
 <body>
-<div class="well">
-    <div class="row">
-			<div class="col-lg-2">
+      <br>
+      <div class="container">
+      
             <div class="col-lg-2">Filter by Brand Name:
             	<div class="input-group">
       				<span class="input-group-addon">
@@ -110,14 +116,15 @@
 				
 			</div>
 			</div>
-			</div>
+			
              <div class="col-lg-10" style="border-left:2px solid grey">
-             	<h3 >Products <%=category%></p>
+             	<h3 > </p>
 
              		<div class="itemgrid">
-				<h2>Featured Products</h2>
+				<h2>Featured Products of <%=category%> category</h2>
 				
 				<div class="items" style="margin-left:20px">
+        </div>
 				<ul>		
          <%
      while(cursor.hasNext()) {

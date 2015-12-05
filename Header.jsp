@@ -1,3 +1,4 @@
+<%@page import="beans.UserBean" %>
 
 <%@ page import="java.util.Date" %>
 <%@page import="java.io.*"%>
@@ -12,7 +13,6 @@
 <%@page import="com.mongodb.DB"%>
 <%@page import="com.mongodb.DBCollection"%>
 <%@page import="com.mongodb.BasicDBObject"%>
-<%@page import="com.mongodb.BasicDBList"%>
 <%@page import="com.mongodb.DBObject"%>
 <%@page import="com.mongodb.DBCursor"%>
 <%@page import="com.mongodb.ServerAddress"%>
@@ -26,12 +26,6 @@
 <%@page import="java.util.Set"%>
 <%@page import="javax.servlet.*"%>
 <%@page import="javax.servlet.http.*"%>
-<%@page import="org.bson.types.ObjectId"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
-<%@page import="beans.*"%>
-<%@page import="servlets.*"%>
 <html>
 <TITLE>elexTore</TITLE>
 <head>
@@ -49,41 +43,32 @@
 
 <body onload='init()'; background="images/mainpage/image2.jpg">
 	<%
-	int cartItems=0;
-	//HttpSession session=request.getSession();
-	 List<Cart> list=null; 
+	String cartItems="";
 	try{
-	HttpSession s=request.getSession();
-list= (List<Cart>) s.getAttribute("list");
-	String error=session.getAttribute("error").toString();
-	
-	//cartItems=list.size();
-		cartItems = (Integer)s.getAttribute("cartCount");
-		//if (cartItems == null){
-		//	session.setAttribute("cartItems","0");
-		//	cartItems = "0";
-		//}
+		cartItems = session.getAttribute("cartItems").toString();
+		if (cartItems == null){
+			session.setAttribute("cartItems","0");
+			cartItems = "0";
+		}
 	}
 	catch(Exception e){
-		//cartItems = 0;
+		cartItems = "0";
 	}
-	UserBean userBean=null;
+	UserBean usrBean=null;
 	String userName="";
-	String role="";
 	try{
-		userBean = (UserBean)session.getAttribute("userbean");
+		usrBean = (UserBean)session.getAttribute("usrbean");
 
-		if (userBean == null){
+		if (usrBean == null){
 			userName = "Guest";
 		}
 		else{
-			userName=userBean.getFirstName();
-			role=userBean.getRole();
+			userName=usrBean.getFirstName();
 			
 		}
 	}
 	catch(Exception e){
-		//cartItems = 0;
+		cartItems = "0";
 	}
 	
 	%>
@@ -97,22 +82,12 @@ list= (List<Cart>) s.getAttribute("list");
 			</div>
 			<div class="account_desc">
 				<ul>
-					
+					<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
 						<%if(userName.equals("Guest")){%>
-						<li><a href="signup.jsp" class="acolor" style="color:#30A2DE" >Sign Up</a></li>
-					<li><a href="signin.jsp" class="acolor" style="color:#30A2DE">Sign In</a></li>
+					<li><a href="signin.jsp" class="acolor" style="color:#30A2DE">Log In</a></li>
 					<%}%>
-
-					<!-- <li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li> -->
-					<%if(role.equals("storeManager")){
-					%>
-					<li><a href="storeManager.jsp" class="acolor" style="color:#30A2DE">Products</a></li>
-				<%}%>
-				<%if(role.equals("salesMan")){
-					%>
-					<li><a href="viewAllOrders.jsp" class="acolor" style="color:#30A2DE">All Orders</a></li>
-				<%}%>
-					<li><a href="myOrders.jsp" class="acolor" style="color:#30A2DE">My Orders</a></li>
+					<li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li>
+					<li><a href="viewOrders.jsp" class="acolor" style="color:#30A2DE">Your Orders</a></li>
 					<li><b><i><a style="color:#1F4255"  href="">Welcome <%= userName%></a></i></b></li>
 					<%if(!(userName.equals("Guest"))){%>
 					<li><a href="LogOutServlet" class="acolor" style="color:#30A2DE">Log Out</a></li>
@@ -121,21 +96,19 @@ list= (List<Cart>) s.getAttribute("list");
 			</div>
 			</div>
 		<div class="header_top">
-		<a href="index.jsp">
 			<div class="logo">
 
 			</div>
-			</a>
 			<div class="links">
 			<ul></ul>
 				
-				<% if(cartItems==0) { %>
+				<% if(cartItems.equals("0")) { %>
 				
-				<div class="cart" onclick="window.location ='cart.jsp';">
+				<div class="cart" onclick="window.location ='/elextore/OrderPage.jsp';">
 				
 				<% } else { %>
 				
-				<div class="cart_full" onclick="window.location ='cart.jsp';">
+				<div class="cart_full" onclick="window.location ='/elextore/OrderPage.jsp';">
 				
 				<% } %>
 				
@@ -149,7 +122,6 @@ list= (List<Cart>) s.getAttribute("list");
 
 		<div class="navigatation">
 			<ul>
-
 
 			<div class="dropdown">
   			<button onclick="myFunction()" class="dropbtn">Shop by Categories</button>
@@ -183,21 +155,30 @@ list= (List<Cart>) s.getAttribute("list");
 	</script>
 
 </div>
-				<li><a href="index.jsp">Home</a></li>
+				<li><a href="/elextore/index.jsp">Home</a></li>
 				
 
 				<li><a href="aboutus.jsp">About Us</a></li>
 
-				<li><a href="contactus.jsp">Contact Us</a></li>
-				
-
-				<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
-						
-			</ul>		
+				<li><a href="/elextore/contactus.jsp">Contact Us</a></li>
+			</ul>
 			
 			
+			
+			
+			
+			<div class="search" style="right:50px">
+			
+			<div class="right-inner-addon " >
+    <i class="icon-search"></i>
+    <input type="search"
+           class="form-control" 
+           placeholder="Search" />
+           <button>search</button>	
+          
+</div>
+		 		
+			</div>
 
 
 <div class="search" style="float:right">
@@ -205,37 +186,8 @@ list= (List<Cart>) s.getAttribute("list");
 
 
 		</div>
-
-		<div>
-		<TABLE BORDER="0" WIDTH="100%">
-			<tr>
-				<td ALIGN="LEFT" WIDTH="100%">
-				
-				<img src="images/mainpage/save25.jpg" style="width:410px; height:437px;"></img>
-							
-				</td>
-
-				<td ALIGN="center" WIDTH="80%">
-				<div id="sliderFrame">
-
-				
-					<div id="slider">
-					<a href="images/mainpage/image1.jpg" target="_blank">
-					<img src="images/mainpage/image1.jpg" alt="Welcome to elexTore.com" />
-					</a>
-					<img src="images/mainpage/image2.jpg" alt="" />
-					<img src="images/mainpage/image3.jpg" alt="" />
-					</div>
-
-
 		</div>
-		<br><br>
-		</td>
-		</tr>
-		</TABLE>	
-			
-			
-				</div>
-				
-
-</body>			
+		</div>
+		</div>
+		</body>
+		</html>
