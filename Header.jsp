@@ -149,26 +149,55 @@ list= (List<Cart>) s.getAttribute("list");
 
 		<div class="navigatation">
 			<ul>
+
+
+			<div class="dropdown">
+  			<button onclick="myFunction()" class="dropbtn">Shop by Categories</button>
+  			<div id="myDropdown" class="dropdown-content">
+		    <a href="Products.jsp?category=Games" class="products">APPLIANCES</a>
+		    <a href="Products.jsp?category=Equipments" class="products">TV & HOME THEATER</a>
+		    <a href="Products.jsp?category=footwear" class="products">COMPUTERS & TABLETS</a>
+		    <a href="Products.jsp?category=men" class="products">CAMERAS & CAMCORDERS</a>
+		    <a href="Products.jsp?category=women" class="products">AUDIO</a>
+  			</div>
+	<script>
+	function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+// Close the dropdown menu if the user clicks outside of it
+	window.onclick = function(event) {
+  	if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+	</script>
+
+</div>
 				<li><a href="index.jsp">Home</a></li>
 				
 
 				<li><a href="aboutus.jsp">About Us</a></li>
 
 				<li><a href="contactus.jsp">Contact Us</a></li>
+				
+
+				<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
+						
 			</ul>		
 			
-			<div class="search" style="right:50px">
 			
-			<div class="right-inner-addon " >
-    <i class="icon-search"></i>
-    <input type="search"
-           class="form-control" 
-           placeholder="Search" />
-           <button>search</button>	
-          
-</div>
-		 		
-			</div>
 
 
 <div class="search" style="float:right">
@@ -176,22 +205,13 @@ list= (List<Cart>) s.getAttribute("list");
 
 
 		</div>
-		<div class="categories">
+
+		<div>
 		<TABLE BORDER="0" WIDTH="100%">
 			<tr>
-				<td ALIGN="LEFT" WIDTH="23%" style="padding-left:1px;">
+				<td ALIGN="LEFT" WIDTH="100%">
 				
-				<h2 style="height: 44px; width: 200px;">Product Categories</h2>
-				<a href="Products.jsp?category=Games" class="products" >Appliances</a>
-				<br>
-				<a href="Products.jsp?category=Equipments" class="products" >TV & Home Theater</a>
-				<br>
-				<a href="Products.jsp?category=footwear" class="products" >Computers & Tablets</a>
-				<br>
-				<a href="Products.jsp?category=men" class="products" >Cameras & Camcorders</a>
-				<br>
-				<a href="Products.jsp?category=women" class="products" >Audio</a>
-				<br>
+				<img src="images/mainpage/save25.jpg" style="width:410px; height:437px;"></img>
 							
 				</td>
 
