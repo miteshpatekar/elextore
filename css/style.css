@@ -708,6 +708,7 @@ font-family: normal 0.9em Arial;
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 99;
 }
 
 /* Dropdown Content (Hidden by Default) */

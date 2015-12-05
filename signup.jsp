@@ -66,7 +66,7 @@ try{
 				<div id="wrapper">
 				<div id="sliderFrame">
 
-        <form action="SignUp" method="POST" name="signupForm" onsubmit="return validateInfo()">
+        <form action="SignUp" method="post" name="signupForm" onsubmit="return validateInfo()">
             <fieldset align="center">
                 <legend>Register Form</legend>
                 <div>

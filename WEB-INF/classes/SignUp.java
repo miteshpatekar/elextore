@@ -33,7 +33,7 @@ public class SignUp extends HttpServlet {
 		mongo = new MongoClient("52.11.50.218", 27017);	 
 	}
 	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession s=request.getSession();
 		try{
 			Boolean isUserExist=false;
