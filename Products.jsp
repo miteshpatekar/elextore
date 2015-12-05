@@ -17,9 +17,10 @@
             DB db = mongo.getDB("Elextore");
             DBCollection collection = db.getCollection("products");
             BasicDBObject whereQuery = new BasicDBObject();
+
             String category=request.getParameter("category");
-            
-            DBCursor cursor = collection.find();
+             whereQuery.put("category", category);
+            DBCursor cursor = collection.find(whereQuery);
 %>
 
 <body>
@@ -134,55 +135,21 @@
            
                     Object orderId=(Object)obj.get("_id");
              //  System.out.println(obj.get("Manufacturer")+"----");
-               String str=(String)obj.get("category");
-           if(str.equals(category))
-           {
+              // String str=(String)obj.get("category");
+         //  if(str.equals(category))
+          // {
  
 
 %>
 		<a href='productDetails.jsp?productId=<%=orderId.toString()%>'>
                 <li>
-                <img src='<%=obj.get("imagePath")%>' alt="No Image found for this product" width="250" height="238">
+                <img src='<%=obj.get("imageUrl")%>' alt="No Image found for this product" width="250" height="238">
                 <h4><%=obj.get("name")%></h4>
                 <p><b>$<%=obj.get("price")%> <a href='cart.jsp?productId=<%=orderId.toString()%>'> Add To Cart </a></b></p>
                 </li>
                 </a>
-                <%}%>
-               <!--  <li>
-                <img src="images/dellinspiron13 7000series.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Dell Inspiron13 7000series</h4>
-                <p><b>$500 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/dellalienware15.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Alienware 15</h4>
-                <p><b>$1999 <a href="/elextore/OrderPage.jsp?itemID=6"> Add To Cart </a></b></p>
-                </li>
-				<li>
-                <img src="images/dellprecisionM3800.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Dell Precision M3800</h4>
-                <p><b>$1500 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/dellxps15.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Dell XPS 15 Touch</h4>
-                <p><b>$1400 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/dellxps13.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Dell XPS 13 Touch</h4>
-                <p><b>$1200 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/dellinspiron14.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Dell Inspiron 14</h4>
-                <p><b>$799 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/delllatitude14.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Dell Latitude</h4>
-                <p><b>$599 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li> -->
+               
+             
                 <% }%>
 				</ul>
 				

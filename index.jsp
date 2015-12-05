@@ -24,7 +24,7 @@ public void setProducts(){
                 flag1=1;      
                 cursor.next();          
                 }
-
+                    System.out.println("ahdas%%%% "+flag1);
                 if(flag1==0)
                 {
 
@@ -35,19 +35,20 @@ public void setProducts(){
 
                     while(productIterator.hasNext())
                     {
+                    System.out.println("ahdas%%%% "+flag1);
                         Integer id=productIterator.next();
                         Product p=hmap.get(id);  
                         //commandArguments.put("Id", p.Id);
                         commandArguments.put("name", p.getName());
                         commandArguments.put("retailerName", p.getRetailerName());
                         commandArguments.put("category", p.getCategory());
-                        commandArguments.put("price", p.getPrice());  
+                        commandArguments.put("price", String.valueOf(p.getPrice()));  
                          commandArguments.put("description", p.getDescription());
                         commandArguments.put("imageUrl", p.getImageUrl());  
                         commandArguments.put("isActive", p.getIsActive()); 
                         commandArguments.put("isOnSale", p.getIsOnSale());
                         BasicDBObject doc = new BasicDBObject(commandArguments);
-                    //products.insert(doc);
+                    products.insert(doc);
                     }
 
                               

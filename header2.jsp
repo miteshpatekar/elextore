@@ -1,5 +1,4 @@
-
-<%@ page import="java.util.Date" %>
+<%@page import="java.util.Date" %>
 <%@page import="java.io.*"%>
 <%@page import="javax.servlet.ServletException"%>
 <%@page import="javax.servlet.annotation.WebServlet"%>
@@ -154,11 +153,11 @@ list= (List<Cart>) s.getAttribute("list");
 			<div class="dropdown">
   			<button onclick="myFunction()" class="dropbtn">Shop by Categories</button>
   			<div id="myDropdown" class="dropdown-content">
-		    <a href="Products.jsp?category=Games" class="products">APPLIANCES</a>
-		    <a href="Products.jsp?category=Equipments" class="products">TV & HOME THEATER</a>
-		    <a href="Products.jsp?category=footwear" class="products">COMPUTERS & TABLETS</a>
-		    <a href="Products.jsp?category=men" class="products">CAMERAS & CAMCORDERS</a>
-		    <a href="Products.jsp?category=women" class="products">AUDIO</a>
+		    <a href="Products.jsp?category=Appliances" class="products">APPLIANCES</a>
+		    <a href="Products.jsp?category=TVHomeTheater" class="products">TV & HOME THEATER</a>
+		    <a href="Products.jsp?category=ComputersTablets" class="products">COMPUTERS & TABLETS</a>
+		    <a href="Products.jsp?category=CameraCamcorders" class="products">CAMERAS & CAMCORDERS</a>
+		    <a href="Products.jsp?category=Audio" class="products">AUDIO</a>
   			</div>
 	<script>
 	function myFunction() {

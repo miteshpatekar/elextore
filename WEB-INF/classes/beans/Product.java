@@ -5,7 +5,7 @@ public class Product{
   private String id;
 	private String name;
 	private String retailerName;
-	private int price;
+	private double price;
 	private String category;
 	private String imageUrl;
   private String description;
@@ -13,7 +13,7 @@ public class Product{
   private Boolean isActive;
   private Boolean isOnSale;
   
-  public Product(String name,String retailerName,int price,String category,String imageUrl,String description, String rebate,Boolean isActive,Boolean isOnSale){
+  public Product(String name,String retailerName,double price,String category,String imageUrl,String description, String rebate,Boolean isActive,Boolean isOnSale){
     this.name=name;
     this.retailerName=retailerName;
     this.price=price;
@@ -49,11 +49,11 @@ public class Product{
     this.retailerName = retailerName;
   } 
 
-   public int getPrice() {
+   public double getPrice() {
     return(price);
   }
 
-  public void setPrice(int price) {
+  public void setPrice(double price) {
     this.price = price;
   } 
 

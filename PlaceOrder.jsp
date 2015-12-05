@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<%@include file="Header.jsp"%>
+<%@include file="header2.jsp"%>
 <HTML>
 <HEAD>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
@@ -66,9 +66,65 @@ function validateInfo(){
 }
 
 </script>
+<%
+ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
+Boolean isCouponExist=false;
+int discount=0;
+double total1=0;
+String error="";
+           HttpSession s=request.getSession();                        
+            int total=(Integer)s.getAttribute("total");
+
+			DB db = mongo.getDB("Elextore");
+			DBCollection collection = db.getCollection("couponCodes");
+
+            String couponCode=request.getParameter("couponCode");
+System.out.println("enterre@@@@@@@"+couponCode );
+       try{
+
+
+         if(couponCode!=null)
+         {
+            //if(couponCode.equals("couponCode"))
+           // {
+            	System.out.println("enterre@@@@@@@");
+			BasicDBObject whereQuery = new BasicDBObject();
+			whereQuery.put("couponCode", couponCode);
+			//BasicDBObject whereQuery1 = new BasicDBObject();
+			DBCursor cursor = collection.find(whereQuery);
+			while(cursor.hasNext()) {
+				isCouponExist=true; 
+				BasicDBObject obj = (BasicDBObject) cursor.next();	
+				 String discount1= obj.get("discount").toString();
+				 discount=Integer.parseInt(discount1);
+				 System.out.println("enterre@@@@@@@" + discount+" "+ total);
+				}
+
+				if(isCouponExist)
+				{
+					 total1=(total*discount)/100;
+					 System.out.println("Final$$$$$" + total1);
+					s.setAttribute("total",total1);
+				}
+				else
+				{
+					error="Coupon doesnt exists";
+				}
+           // }
+        }
+    }catch(Exception e)
+    {}
+        %>
+    
 </HEAD>
 <BODY>
 <H1 ALIGN="CENTER">Add your personal details for this order</H1>
+<form action="PlaceOrder.jsp" method="get">
+	<h3>Total Price =<%=total%> </h3>
+	<INPUT TYPE="TEXT" NAME="couponCode">
+	<input type="submit" class="btn btn-success" value="Apply Code">
+</form>
+
 <FORM NAME="userForm" ACTION="submitOrder.jsp" onsubmit="return validateInfo()" METHOD="POST">
   <HR>
   <TABLE id="order_form">

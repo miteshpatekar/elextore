@@ -93,6 +93,13 @@
         <servlet-name>AddProductsServlet</servlet-name>
         <url-pattern>/servlets/AddProductsServlet</url-pattern>
     </servlet-mapping>
-	
+	<servlet>
+        <servlet-name>AddCoupon</servlet-name>
+        <servlet-class>AddCoupon</servlet-class>
+    </servlet>
+ <servlet-mapping>
+        <servlet-name>AddCoupon</servlet-name>
+        <url-pattern>/AddCoupon</url-pattern>
+    </servlet-mapping>
 
 </web-app>

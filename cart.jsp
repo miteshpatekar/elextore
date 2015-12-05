@@ -1,4 +1,4 @@
-<%@include file="Header.jsp" %>
+<%@include file="header2.jsp" %>
 
 <%
         MongoClient mongo = new MongoClient("52.11.50.218", 27017);
@@ -98,7 +98,9 @@
 
                     String id=productIdm.toString();
                     String name=(String)obj.get("name");
-                    int price=(Integer)obj.get("price");
+                    String priceStr=obj.get("price").toString();
+                    double priced=Double.parseDouble(priceStr);
+                    int price=(int)priced;
                     String imageUrl=(String)obj.get("imageUrl");
                     //System.out.println("^^^^^****"+id+name+price+productId);
                     if(from==null){
