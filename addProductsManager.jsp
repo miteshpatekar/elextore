@@ -1,4 +1,4 @@
-<%@include file="Header.jsp" %>
+<%@include file="header2.jsp" %>
 
 <%
     HttpSession s=request.getSession();
@@ -6,7 +6,6 @@
     //String role=userBean.getRole();
     String selectedCategory = "";
     DB db = InitServlet.getInstance().getMongoDBObject();
-
     DBCollection collection1 = db.getCollection("Categories");
     BasicDBObject whereQuery1 = new BasicDBObject();
     DBCursor cursor1 = collection1.find();

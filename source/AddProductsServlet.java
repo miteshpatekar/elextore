@@ -68,7 +68,7 @@ public class AddProductsServlet extends HttpServlet {
             newDocument.append("$set", new BasicDBObject().append("isActive", false));
             BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
             products.update(searchQuery, newDocument);
-            request.getRequestDispatcher("addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
+            request.getRequestDispatcher("/addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
         }
         else if(buttonValue != null && buttonValue.equals("Update Product")){
             String productId = request.getParameter("productId");
@@ -92,7 +92,7 @@ public class AddProductsServlet extends HttpServlet {
             newDocument.append("$set", new BasicDBObject().append("rebate", rebateValue));
             BasicDBObject updateQuery = new BasicDBObject().append("_id", objid);
             updatePoducts.update(updateQuery, newDocument);
-            request.getRequestDispatcher("addProductsManager.jsp?success=Product Updated Successfully..!").forward(request, response);
+            request.getRequestDispatcher("/addProductsManager.jsp?success=Product Updated Successfully..!").forward(request, response);
         }
 
     }

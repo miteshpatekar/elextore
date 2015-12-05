@@ -1,4 +1,31 @@
-<%@include file="Header.jsp" %>
+<%@include file="header2.jsp" %>
+
+
+<%
+
+    HttpSession s=request.getSession();
+    String username=userBean.getEmail();
+    //String role=userBean.getRole();
+    String selectedCategory = "";
+    DB db = InitServlet.getInstance().getMongoDBObject();
+	String productId = request.getParameter("productId");
+	ObjectId objProductId = new ObjectId(productId);
+
+    DBCollection collection1 = db.getCollection("products");
+    BasicDBObject whereQuery = new BasicDBObject();
+	whereQuery.put("_id", objProductId);
+	DBObject product = collection1.findOne(whereQuery);
+
+    String productName = (String)product.get("name");
+    String retailerName = (String)product.get("retailerName");
+    String productPrice = (String)product.get("price");
+    String productDescription = (String)product.get("description");
+    String productManufacturer = (String)product.get("manufacturer");
+    String productCategory = (String)product.get("category");
+    boolean onsale = (Boolean)product.get("isOnSale");
+    String imageURL = (String)product.get("imageUrl");
+
+%>
 <body>
  <div id="body">		
 	<section id="content">
@@ -6,7 +33,7 @@
 	<h3>Product Details</h3>
    <div class="row">
            <div class="col-lg-3">
-		   <img src = "images/dellxps15.jpg" width = "250" height = "200" alt = "Microsoft - Xbox - Black">
+		   <img src = "<%=imageURL%>" width = "250" height = "200" alt = "No Image for Product">
 		</div>
 		   
             <div class="col-lg-5" style="border-left:2px solid grey">
@@ -14,13 +41,13 @@
 
            <div class="panel panel-primary">
    					<div class="panel-heading">
-    			<h3 class="panel-title">Dell XPS 15</h3>
+    			<h3 class="panel-title"><%=productName%>></h3>
   				</div>
   				<div class="panel-body">
     				<ul class="list-group">
-  <li class="list-group-item">Model : XZ</li>
-  <li class="list-group-item">Size : OX</li>
-  <li class="list-group-item">Color : Red</li>
+  <li class="list-group-item">Manufacturer : <%=productManufacturer%></li>
+  <li class="list-group-item">Category : <%=productCategory%></li>
+  <li class="list-group-item">Retailer : <%=retailerName%></li>
 </ul>
   				</div>
   
@@ -28,10 +55,8 @@
             </div>
 
             <div class="col-lg-4">
-            	<button type="button" class="btn btn-success"><a href="cart.jsp">Add to Cart</a></button><br></br>
-            	<h3> $900</h3>
-				
-				<button type="button" class="btn btn-primary">Wish List</button><br></br>
+                <h3>Price: $<%=productPrice%></h3><br>
+            	<button type="button" class="btn btn-success"><a href="cart.jsp">Add to Cart</a></button>
             </div>
            
    </div>
@@ -40,14 +65,10 @@
    		<div class="col-lg-6">
    				<div class="panel panel-primary">
    					<div class="panel-heading">
-    			<h3 class="panel-title">Technical Specifications</h3>
+    			<h3 class="panel-title">Description</h3>
   				</div>
   				<div class="panel-body">
-    				<ul class="list-group">
-  <li class="list-group-item">Size : 15'</li>
-  <li class="list-group-item">Processor : i7</li>
-  <li class="list-group-item">Ram : 8GB</li>
-</ul>
+    				<textarea type="text" class="form-control" placeholder="Description"><%=productDescription%></textarea>
   				</div>
   
 			</div>
@@ -59,19 +80,26 @@
     			<h3 class="panel-title">Review</h3>
   				</div>
   				<div class="panel-body">
-    				<form class="navbar-form navbar-left" role="search">
+    				<form class="navbar-form navbar-left" role="search" action="/SubmitReview.java">
   					<div class="form-group">
-  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Rating <span class="caret"></span>
-  </button>
-  						<ul class="dropdown-menu">
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    
-  </ul></br>
+  						<p>
+                              Rating:
+                              <span class="starRating">
+                                <input id="rating5" type="radio" name="rating" value="5">
+                                <label for="rating5">5</label>
+                                <input id="rating4" type="radio" name="rating" value="4">
+                                <label for="rating4">4</label>
+                                <input id="rating3" type="radio" name="rating" value="3" checked>
+                                <label for="rating3">3</label>
+                                <input id="rating2" type="radio" name="rating" value="2">
+                                <label for="rating2">2</label>
+                                <input id="rating1" type="radio" name="rating" value="1">
+                                <label for="rating1">1</label>
+                              </span>
+                            </p>
+                          </body>
   Review text
-    					<textarea type="text" class="form-control" placeholder="Search"></textarea>
+    					<textarea type="text" name="reviewText" class="form-control" placeholder="Review" required></textarea>
   						</div></br>
   						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>

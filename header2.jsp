@@ -36,6 +36,7 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
 <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
  <script type="text/javascript" src="JS/javascript.js"></script>
