@@ -440,7 +440,7 @@ clear:left;
 float:left;
 width:100%;
 padding-top:20px;
-color:#757575;
+color:blue;
 
 }
 
@@ -667,8 +667,7 @@ font-family: normal 0.9em Arial;
 	margin: 0;
 	padding: 0px 0px 3px 0px;
 	font-size: 25px;
-	line-height: 44px;
-	letter-spacing: 0px;
+	line-height: 44pxnt	letter-spacing: 0px;t
 	font-weight: bold;
 }
 
@@ -754,5 +753,5 @@ font-family: normal 0.9em Arial;
   overflow: hidden;
 }
 
-
+.horizontal { display: inline; background-color: aqua; }
 

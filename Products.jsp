@@ -119,15 +119,15 @@
 			</div>
 			
              <div class="col-lg-10" style="border-left:2px solid grey">
-             	<h3 > </p>
+             	 </p>
 
-             		<div class="itemgrid">
-				<h2>Featured Products of <%=category%> category</h2>
+            <div class="itemgrid">
+				      <h4><b>Featured Products of <%=category%> category</b></h4>
 				
-				<div class="items" style="margin-left:20px">
-        </div>
-				<ul>		
-         <%
+				      <div class="items" style="margin-left:20px">
+              
+				    <ul>		
+          <%
      while(cursor.hasNext()) {
 
                 BasicDBObject obj = (BasicDBObject) cursor.next();
@@ -140,19 +140,19 @@
           // {
  
 
-%>
-		<a href='productDetails.jsp?productId=<%=orderId.toString()%>'>
-                <li>
+%>          <li >
+		        <a href='productDetails.jsp?productId=<%=orderId.toString()%>'></a>
+               
                 <img src='<%=obj.get("imageUrl")%>' alt="No Image found for this product" width="250" height="238">
                 <h4><%=obj.get("name")%></h4>
-                <p><b>$<%=obj.get("price")%> <a href='cart.jsp?productId=<%=orderId.toString()%>'> Add To Cart </a></b></p>
-                </li>
-                </a>
+                <p><h4><b>$<%=obj.get("price")%></b> <b><a href='cart.jsp?productId=<%=orderId.toString()%>'> Add To Cart </a></b></h4></p>
                
+                
+                </li>
              
                 <% }%>
 				</ul>
-				
+				</div>
 				</div>
 				</div>
 
