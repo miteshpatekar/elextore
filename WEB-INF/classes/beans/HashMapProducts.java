@@ -28,7 +28,7 @@ public class HashMapProducts {
 	Product p16=new Product("Sony Cybershot RX100","Sony",900.0,"CameraCamcorders","images/cameraandcamcorders/sonycybershotrx100.jpg","This is Sony Cybershot RX100.80x zoom.40.6MP.DSLR", "",true,true);    
     Product p17=new Product("Acer E1 532","Acer",600.0,"ComputersTablets","images/laptopandtablets/acere1532.jpg","This is Acer E1 532.i5 processor.8GB RAM.1TB HDD.", "",true,true);
 	Product p18=new Product("Acer E1 472","Acer",700.0,"ComputersTablets","images/laptopandtablets/acere1472.jpg","This is Acer E1 472.i7 processor.8GB RAM.1TB HDD.", "",true,true);
-	Product p19=new Product("Acer E1 731","Acer",800.0,"ComputersTablets","images/laptopandtablets/acere1732.jpg","This is Acer E1 731.i7 processor.8GB RAM.1TB HDD.", "",true,true);
+	Product p19=new Product("Acer E1 731","Acer",800.0,"ComputersTablets","images/laptopandtablets/acere1731.jpg","This is Acer E1 731.i7 processor.8GB RAM.1TB HDD.", "",true,true);
 	Product p20=new Product("Acer E1 771","Acer",850.0,"ComputersTablets","images/laptopandtablets/acere1771.jpg","This is Acer E1 771.i7 processor.8GB RAM.1TB HDD.", "",true,true);
 	Product p21=new Product("Apple Macbook Air","Apple",1000.0,"ComputersTablets","images/laptopandtablets/applemacbookair.jpg","This is Macbook Air.i7 processor.8GB RAM.500GB HDD.", "",true,true);    
 	Product p22=new Product("Apple Macbook Pro","Apple",1200.0,"ComputersTablets","images/laptopandtablets/applemacbookpro.jpg","This is Macbook Pro.i7 processor.8GB RAM.500GB HDD.", "",true,true);    
@@ -43,7 +43,7 @@ public class HashMapProducts {
 	Product p31=new Product("Samsung Ativ Book9 Plus ","Samsung",600.0,"ComputersTablets","images/laptopandtablets/samsungativbook9plus.jpg","This is Samsung Ativ plus.i5 processor.8GB RAM.1TB HDD.", "",true,true);
 	Product p32=new Product("Samsung Ativ Book9 Pro","Samsung",800.0,"ComputersTablets","images/laptopandtablets/samsungativbook9pro.jpg","This is Samsung Ativ pro.i5 processor.8GB RAM.1TB HDD.", "",true,true);		
 	Product p33=new Product("Samsung Ativ Book9 Spin","Samsung",900.0,"ComputersTablets","images/laptopandtablets/samsungativbook9spin.jpg","This is Samsung Ativ spin.i5 processor.8GB RAM.1TB HDD.", "",true,true);
-	Product p34=new Product("Beaumatic Washing Machine","Beaumatic",500.0,"Appliances","images/Appliances/beaumaticwashingmachine.jpg","This is Beaumatic washing machine.Front load.5.7 Cu ft.", "",true,true);
+	Product p34=new Product("Beaumatic Washing Machine","Beaumatic",500.0,"Appliances","images/Appliances/beumaticwashingmachine.jpg","This is Beaumatic washing machine.Front load.5.7 Cu ft.", "",true,true);
 	Product p35=new Product("Cannylife Washing Machine","Cannylife",900.0,"Appliances","images/Appliances/cannylifewashingmachine.jpg","This is Cannylife washing machine.Top load.8.4 Cu ft.", "",true,true);
 	Product p36=new Product("LG Washing Machine","LG",900.0,"Appliances","images/Appliances/lgwashingmachine.jpg","This is LG washing machine.Front load.5.7 Cu ft.", "",true,true);
 	Product p37=new Product("Whirlpool Washing Machine","Whirlpool",1000.0,"Appliances","images/Appliances/whirlpoolwashingmachine.jpg","This is Whirlpool washing machine.Top load.8.4 Cu ft.", "",true,true);
@@ -90,8 +90,7 @@ public class HashMapProducts {
 	Product p78=new Product("Ipad air2","Apple",400.0,"ComputersTablets","images/laptopandtablets/ipadair2.jpg","This is Ipad air 2.12.6'.32GB.", "",true,true);		
 	Product p79=new Product("Ipad Mini ","Apple",400.0,"ComputersTablets","images/laptopandtablets/ipadmini.jpg","This is Ipad Mini.12.6'.32GB.", "",true,true);		
 	Product p80=new Product("Lenovo Tab","Lenovo",300.0,"ComputersTablets","images/laptopandtablets/lenovo.jpg","This is Lenovo Tab.9.6'.16GB.", "",true,true);		
-	Product p81=new Product("Mi Tab","Mi",300.0,"ComputersTablets","images/laptopandtablets/mi.jpg","This is Mi Tab.9.6'.16GB.", "",true,true);		
-	Product p82=new Product("Panasonic Tab","Panasonic",300.0,"ComputersTablets","images/laptopandtablets/panasonic.jpg","This is Panasonic Tab.9.6'.16GB.", "",true,true);		
+	
 	
 	
 	// TODO Auto-generated method stub
@@ -176,8 +175,8 @@ public class HashMapProducts {
 		 hmap.put(78,p78); 
 		 hmap.put(79,p79); 
 		 hmap.put(80,p80); 
-		 hmap.put(81,p81); 
-		 hmap.put(82,p82); 
+		 //hmap.put(81,p81); 
+		 //hmap.put(82,p82); 
          // hmap.put(p3.Id, p3);
          // hmap.put(p4.Id, p4);    
          // hmap.put(p5.Id, p5);
