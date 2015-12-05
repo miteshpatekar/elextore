@@ -4,17 +4,23 @@
 <%
 
     HttpSession s=request.getSession();
-    String username=userBean.getEmail();
+     if(userBean==null)
+        {
+            request.getRequestDispatcher("/signin.jsp").forward(request, response);
+        }
+      // else
+      //  {
+      String username=userBean.getEmail();
     //String role=userBean.getRole();
     String selectedCategory = "";
     DB db = InitServlet.getInstance().getMongoDBObject();
-	String productId = request.getParameter("productId");
-	ObjectId objProductId = new ObjectId(productId);
+  String productId = request.getParameter("productId");
+  ObjectId objProductId = new ObjectId(productId);
 
     DBCollection collection1 = db.getCollection("products");
     BasicDBObject whereQuery = new BasicDBObject();
-	whereQuery.put("_id", objProductId);
-	DBObject product = collection1.findOne(whereQuery);
+  whereQuery.put("_id", objProductId);
+  DBObject product = collection1.findOne(whereQuery);
 
     String productName = (String)product.get("name");
     String retailerName = (String)product.get("retailerName");
@@ -24,6 +30,8 @@
     String productCategory = (String)product.get("category");
     boolean onsale = (Boolean)product.get("isOnSale");
     String imageURL = (String)product.get("imageUrl");
+ // }
+    
 
 %>
 <body>
