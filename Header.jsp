@@ -31,6 +31,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="beans.*"%>
+<%@page import="servlets.*"%>
 <html>
 <TITLE>elexTore</TITLE>
 <head>
@@ -105,7 +106,7 @@ list= (List<Cart>) s.getAttribute("list");
 					<!-- <li><a href="/elextore/OrderPage.jsp" class="acolor" style="color:#30A2DE">Checkout</a></li> -->
 					<%if(role.equals("storeManager")){
 					%>
-					<li><a href="productsAdmin.jsp" class="acolor" style="color:#30A2DE">Products</a></li>
+					<li><a href="storeManager.jsp" class="acolor" style="color:#30A2DE">Products</a></li>
 				<%}%>
 				<%if(role.equals("salesMan")){
 					%>

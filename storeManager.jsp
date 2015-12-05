@@ -1,17 +1,17 @@
 <%@include file="Header.jsp" %>
 
+
+
 <%
-
-MongoClient mongo = new MongoClient("52.11.50.218", 27017);     
         HttpSession s=request.getSession();
-        //String username=(String)s.getAttribute("userName");
-     //   String role=(String)s.getAttribute("role");          
-
-        DB db = mongo.getDB("Elextore");
+        String username=userBean.getEmail();
+        //String role=userBean.getRole();
+        String selectedCategory = "";
+        DB db = InitServlet.getInstance().getMongoDBObject();
         String deleteProduct=request.getParameter("deleteProduct");
     
         DBCollection collection = db.getCollection("products");
-      BasicDBObject whereQuery = new BasicDBObject();
+        BasicDBObject whereQuery = new BasicDBObject();
          if(deleteProduct!=null)
          {
             if(deleteProduct.equals("deleteProduct"))
@@ -26,12 +26,13 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
               
            
             DBCursor cursor = collection.find(whereQuery);
-           // DBCollection collection1 = db.getCollection("products");
-            //BasicDBObject whereQuery1 = new BasicDBObject();       
-          //  DBCursor cursor1 = collection1.find();
+
+            DBCollection collection1 = db.getCollection("Categories");
+            BasicDBObject whereQuery1 = new BasicDBObject();
+            DBCursor cursor1 = collection1.find();
 
 
-                  %>
+%>
 <body>
 <div class="well">
     <div class="row">
@@ -41,7 +42,23 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                 <div class="col-lg-2"> 
                 <form class = 'submit-button' method = 'get' action = 'addProduct.jsp'>
                     <button type="button" class="btn btn-success">Add Product</button>
-                </form>
+                    </form>
+                    <form class = 'submi' method = 'get' action = 'storeManager.jsp'>
+                    <select id="categoriesDropDown" onchange="this.form.submit()">
+                        <%
+                            while(cursor1.hasNext())
+                            {
+                                BasicDBObject obj1 = (BasicDBObject) cursor1.next();
+                               //Integer id=productIterator.next();
+
+                               String category=(String)obj1.get("Category");%>
+                               <option value="category"><%=category%></option>
+
+                            <%}%>
+                        %>
+                    </select>
+                    </form>
+
                 </div>
             </div>
             
@@ -58,13 +75,15 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                     <th>Action</th>
                         </tr>
  <%
+                 if(request.getParameter("categoriesDropDown")!=null)
+                    selectedCategory = request.getParameter("categoriesDropDown");
                  while(cursor.hasNext()) {
                     BasicDBObject obj = (BasicDBObject) cursor.next();
                    // int productId=(int)obj.get("_id");
                     Object productId=(Object)obj.get("_id");
                     String name= (String)obj.get("name");
                     String retailerName= (String)obj.get("retailerName");
-                    int price=(int)obj.get("price");
+                    int price=(Integer)obj.get("price");
                     String imgUrl=(String)obj.get("imageUrl");
                    // BasicDBList itemsList = (BasicDBList) obj.get("items");
 
