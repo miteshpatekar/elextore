@@ -68,7 +68,13 @@ public class SignIn extends HttpServlet {
     			s.setAttribute("userbean",userbean);
     			//s.setAttribute("role",obj.get("role").toString());
 			 	//System.out.println("user logged in successfully");
-				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				if(email.equals("storemanager@elextore.com"))
+				{
+					request.getRequestDispatcher("/storeManager.jsp").forward(request, response);
+				}
+				else {
+					request.getRequestDispatcher("/index.jsp").forward(request, response);
+				}
 				}
 				
 				if(isUser==false)

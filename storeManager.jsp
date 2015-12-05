@@ -9,7 +9,7 @@
         String selectedCategory = "";
         DB db = InitServlet.getInstance().getMongoDBObject();
         String deleteProduct=request.getParameter("deleteProduct");
-    
+        String categoryDD = request.getParameter("categoryDD");
         DBCollection collection = db.getCollection("products");
         BasicDBObject whereQuery = new BasicDBObject();
          if(deleteProduct!=null)
@@ -43,21 +43,26 @@
                 <form class ='submit-button' method='get' action='addProductsManager.jsp'>
                     <button type="submit" class="btn btn-success">Add Product</button>
                 </form>
-                    <form class = 'submi' method = 'get' action = 'storeManager.jsp'>
-                    <select id="categoriesDropDown" onchange="this.form.submit()">
+                    <!--<form class = 'submi' method = 'get' action = 'storeManager.jsp'>
+                    <select id="categoriesDropDown" name="categoryDD" onchange="this.form.submit()">
                         <%
                             while(cursor1.hasNext())
                             {
                                 BasicDBObject obj1 = (BasicDBObject) cursor1.next();
                                //Integer id=productIterator.next();
 
-                               String category=(String)obj1.get("Category");%>
-                               <option value="category"><%=category%></option>
+                               String category=(String)obj1.get("Category");
+                               if(category == categoryDD){%>
+                                    <option value="<%=category%>" selected="selected"><%=category%></option>
+                               <%}
+                               else{%>
+                                    <option value="<%=category%>"><%=category%></option>
 
-                            <%}%>
-                        %>
+                            <%}
+                            }%>
+
                     </select>
-                    </form>
+                    </form>-->
 
                 </div>
             </div>
@@ -75,15 +80,20 @@
                     <th>Action</th>
                         </tr>
  <%
-                 if(request.getParameter("categoriesDropDown")!=null)
-                    selectedCategory = request.getParameter("categoriesDropDown");
+
                  while(cursor.hasNext()) {
-                    BasicDBObject obj = (BasicDBObject) cursor.next();
+
+                   BasicDBObject obj = (BasicDBObject) cursor.next();
+                   //if((categoryDD != null && categoryDD == "All") || (categoryDD != null && categoryDD == (String)obj.get("category") ))
+                   //{
+                   boolean isActive = (Boolean)obj.get("isActive");
+                   if(isActive){
                    // int productId=(int)obj.get("_id");
                     Object productId=(Object)obj.get("_id");
                     String name= (String)obj.get("name");
                     String retailerName= (String)obj.get("retailerName");
-                    double price=(Double)obj.get("price");
+                    Double price=new Double(obj.get("price").toString());
+
                     String imgUrl=(String)obj.get("imageUrl");
                    // BasicDBList itemsList = (BasicDBList) obj.get("items");
 
@@ -95,7 +105,7 @@
                             
                             <td><%=retailerName%></td>
                             <td>
-                                <form class = 'submit-button' method = 'get' action = 'productsUpdate.jsp'>
+                                <form class = 'submit-button' method = 'get' action = 'addProductsManager.jsp?productId=<%=productId%>'>
                                 <input type="hidden" name="op" value="update"/>
                                 <input type='hidden' name ='productId' value = <%=productId%> >
                                 <button type="submit" class="btn btn-success">Update</button>
@@ -111,7 +121,9 @@
 
                         </tr>
                         
-                        <%}%>
+                        <%//}
+                        }
+                        }%>
                     </table>
 
                 </div>

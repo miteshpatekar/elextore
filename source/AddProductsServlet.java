@@ -18,6 +18,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.ServerAddress;
+import org.bson.types.ObjectId;
 import servlets.*;
 
 
@@ -32,7 +33,9 @@ public class AddProductsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String op = request.getParameter("op");
-        if (op.equals("add")) {
+        DB db = mongoClient.getDB("Elextore");
+        String buttonValue = request.getParameter("addUpdateButton");
+        if (buttonValue != null && buttonValue.equals("Add Product")) {
             String productName = request.getParameter("name");
             Double productPrice = Double.parseDouble(request.getParameter("price"));
             String retailer = request.getParameter("retailer");
@@ -40,8 +43,6 @@ public class AddProductsServlet extends HttpServlet {
             String productDescription = request.getParameter("description");
             boolean rebateValue = request.getParameter("rebate") != null;
             boolean onsaleValue = request.getParameter("onsale") != null;
-
-            DB db = mongoClient.getDB("Elextore");
 
             // If the collection does not exists, MongoDB will create it for you
             Map<String, Object> commandArguments = new BasicDBObject();
@@ -58,11 +59,41 @@ public class AddProductsServlet extends HttpServlet {
             productDB.insert(doc);
             request.getRequestDispatcher("/addProductsManager.jsp?success=Product Added Successfully..!").forward(request, response);
         }
-        else if(op.equals("delete"))
+        else if(op != null && op.equals("delete"))
         {
-            ObjectID productID = request.getParameter("productId");
-
-            request.getRequestDispatcher("/addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
+            String productID = request.getParameter("productId");
+            ObjectId objid =new ObjectId(productID);
+            DBCollection products = db.getCollection("products");
+            BasicDBObject newDocument = new BasicDBObject();
+            newDocument.append("$set", new BasicDBObject().append("isActive", false));
+            BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
+            products.update(searchQuery, newDocument);
+            request.getRequestDispatcher("addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
         }
+        else if(buttonValue != null && buttonValue.equals("Update Product")){
+            String productId = request.getParameter("productId");
+            ObjectId objid =new ObjectId(productId);
+            String productName = request.getParameter("name");
+//            Double productPrice = Double.parseDouble(request.getParameter("price"));
+            String productPrice = request.getParameter("price");
+            String retailer = request.getParameter("retailer");
+            String category = request.getParameter("categorylist");
+            String productDescription = request.getParameter("description");
+            boolean rebateValue = request.getParameter("rebate") != null;
+            boolean onsaleValue = request.getParameter("onsale") != null;
+            DBCollection updatePoducts = db.getCollection("products");
+            BasicDBObject newDocument = new BasicDBObject();
+            newDocument.append("$set", new BasicDBObject().append("name", productName));
+            newDocument.append("$set", new BasicDBObject().append("retailerName", retailer));
+            newDocument.append("$set", new BasicDBObject().append("price", productPrice));
+            newDocument.append("$set", new BasicDBObject().append("category", category));
+            newDocument.append("$set", new BasicDBObject().append("description", productDescription));
+            newDocument.append("$set", new BasicDBObject().append("isOnSale", onsaleValue));
+            newDocument.append("$set", new BasicDBObject().append("rebate", rebateValue));
+            BasicDBObject updateQuery = new BasicDBObject().append("_id", objid);
+            updatePoducts.update(updateQuery, newDocument);
+            request.getRequestDispatcher("addProductsManager.jsp?success=Product Updated Successfully..!").forward(request, response);
+        }
+
     }
 }
