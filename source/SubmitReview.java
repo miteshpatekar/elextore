@@ -33,10 +33,24 @@ public class SubmitReview extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         DB db = mongoClient.getDB("Elextore");
         String review = request.getParameter("reviewText");
-        String rating = request.getParmeter("rating");
-        Userbean userBean = (UserBean)session.getAttribute("userbean");
+        String rating = request.getParameter("rating");
+        UserBean userBean = (UserBean)session.getAttribute("userbean");
+        String productId = (String) request.getParameter("productId");
+        String productName = (String) request.getParameter("productName");
 
+        Map<String, Object> commandArguments = new BasicDBObject();
+        DBCollection productDB = db.getCollection("reviews");
+        commandArguments.put("productName", productName);
+        commandArguments.put("productId", productId);
+        commandArguments.put("review", review);
+        commandArguments.put("rating", rating);
+        commandArguments.put("useremail", userBean.getEmail());
+        commandArguments.put("userfname", userBean.getFirstName());
+        BasicDBObject doc = new BasicDBObject(commandArguments);
+        productDB.insert(doc);
+        request.getRequestDispatcher("/productDetails.jsp?success=Review submitted Successfully..!").forward(request, response);
     }
 }

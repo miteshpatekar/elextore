@@ -80,7 +80,9 @@
     			<h3 class="panel-title">Review</h3>
   				</div>
   				<div class="panel-body">
-    				<form class="navbar-form navbar-left" role="search" action="/SubmitReview.java">
+    				<form class="navbar-form navbar-left" role="search" action="servlets/SubmitReview">
+    				<input type="hidden" name="productName" value="<%=productName%>"/>
+                    <input type='hidden' name ='productId' value = "<%=productId%>"/>
   					<div class="form-group">
   						<p>
                               Rating:

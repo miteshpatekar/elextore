@@ -101,5 +101,13 @@
         <servlet-name>AddCoupon</servlet-name>
         <url-pattern>/AddCoupon</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SubmitReview</servlet-name>
+        <servlet-class>servlets.SubmitReview</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmitReview</servlet-name>
+        <url-pattern>/servlets/SubmitReview</url-pattern>
+    </servlet-mapping>
 
 </web-app>
