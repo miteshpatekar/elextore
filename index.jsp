@@ -47,7 +47,7 @@ public void setProducts(){
                         commandArguments.put("isActive", p.getIsActive()); 
                         commandArguments.put("isOnSale", p.getIsOnSale());
                         BasicDBObject doc = new BasicDBObject(commandArguments);
-                    products.insert(doc);
+                    //products.insert(doc);
                     }
 
                               

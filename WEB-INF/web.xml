@@ -84,6 +84,15 @@
         <servlet-name>ValidateServlet</servlet-name>
         <url-pattern>/ValidateServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddProductsServlet</servlet-name>
+        <servlet-class>servlets.AddProductsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProductsServlet</servlet-name>
+        <url-pattern>/servlets/AddProductsServlet</url-pattern>
+    </servlet-mapping>
 	
 
 </web-app>
