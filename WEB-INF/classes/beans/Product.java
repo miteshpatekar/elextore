@@ -26,6 +26,19 @@ public class Product{
     this.isOnSale=isOnSale;
   }
 
+    public Product(String id, String name,String manufacturer,double price,String category,String imageUrl,String description, String rebate,Boolean isActive,Boolean isOnSale){
+        this.id = id;
+        this.name=name;
+        this.manufacturer=manufacturer;
+        this.price=price;
+        this.category=category;
+        this.imageUrl=imageUrl;
+        this.description=description;
+        this.rebate=rebate;
+        this.isActive=isActive;
+        this.isOnSale=isOnSale;
+    }
+
  public String getId() {
     return(id);
   }

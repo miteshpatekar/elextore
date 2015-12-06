@@ -5,7 +5,6 @@ var completeTable;
 var autoRow;
 
 function init() {
-	//alert("Form Initiated ");
     completeField = document.getElementById("complete-field");
     completeTable = document.getElementById("complete-table");
     autoRow = document.getElementById("auto-row");
@@ -13,10 +12,8 @@ function init() {
 }
 
 function doCompletion() {
-
-
-   var url = "autocomplete?action=complete&id=" + escape(completeField.value);
-//   alert("doCompletion Initiated:  "+url );
+	console.log("in do completion")
+    var url = "AutoCompleteServlet?action=complete&id=" + escape(completeField.value);
     req = initRequest();
     req.open("GET", url, true);
     req.onreadystatechange = callback;
@@ -45,12 +42,12 @@ function callback() {
     }
 }
 
-function appendproduct(productId,productName) {
+function appendComposer(firstName,lastName,composerId) {
 
     var row;
     var cell;
     var linkElement;
-    //alert("productId: "+productId);
+    
     if (isIE) {
         completeTable.style.display = 'block';
         row = completeTable.insertRow(completeTable.rows.length);
@@ -67,8 +64,8 @@ function appendproduct(productId,productName) {
 
     linkElement = document.createElement("a");
     linkElement.className = "popupItem";
-    linkElement.setAttribute("href", "autocomplete?action=lookup&id=" + productId);
-    linkElement.appendChild(document.createTextNode(productName));
+    linkElement.setAttribute("href", "AutoCompleteServlet?action=lookup&id=" + composerId+"&productName="+firstName);
+    linkElement.appendChild(document.createTextNode(firstName + " " + lastName));
     cell.appendChild(linkElement);
 }
 
@@ -103,18 +100,20 @@ function parseMessages(responseXML) {
         return false;
     } else {
 
-        var products = responseXML.getElementsByTagName("products")[0];
+        var composers = responseXML.getElementsByTagName("composers")[0];
 
-        if (products.childNodes.length > 0) {
+        if (composers.childNodes.length > 0) {
             completeTable.setAttribute("bordercolor", "black");
             completeTable.setAttribute("border", "1");
     
-            for (loop = 0; loop < products.childNodes.length; loop++) {
-                var product = products.childNodes[loop];
-                var productName = product.getElementsByTagName("shortdescription")[0];
-               // var lastName = product.getElementsByTagName("longdescription")[0];
-                var productId = product.getElementsByTagName("id")[0];
-                appendproduct(productId.childNodes[0].nodeValue,productName.childNodes[0].nodeValue);
+            for (loop = 0; loop < composers.childNodes.length; loop++) {
+                var composer = composers.childNodes[loop];
+                var firstName = composer.getElementsByTagName("firstName")[0];
+                var lastName = composer.getElementsByTagName("lastName")[0];
+                var composerId = composer.getElementsByTagName("id")[0];
+                appendComposer(firstName.childNodes[0].nodeValue,
+                    lastName.childNodes[0].nodeValue,
+                    composerId.childNodes[0].nodeValue);
             }
         }
     }

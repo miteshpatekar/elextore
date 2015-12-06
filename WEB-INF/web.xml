@@ -33,7 +33,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AutoCompleteServlet</servlet-name>
-        <url-pattern>/autocomplete</url-pattern>
+        <url-pattern>/AutoCompleteServlet</url-pattern>
     </servlet-mapping>
     
 

@@ -191,8 +191,27 @@ list= (List<Cart>) s.getAttribute("list");
 				<li><a href="contactus.jsp">Contact Us</a></li>
 				
 
-				<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+				<div class="">
+							<form name="autofillform" action="/AutoCompleteServlet">
+                                                            <table border="0" cellpadding="5">
+                                                                    <tbody>
+                                                                      <tr>
+                                                                        <td><strong>Search:</strong></td>
+                                                                                    <td>
+                                                                                        <input type="text"
+                                                                                   size="40"
+                                                                                   id="complete-field"
+                                                                                               onkeyup="doCompletion()">
+                                                                                    </td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                          <td id="auto-row" colspan="2">
+                                                                            <table id="complete-table" class="popupBox" />
+                                                                          </td>
+                                                                      </tr>
+                                                            </tbody>
+                                                          </table>
+                                                        </form>
 						</div>
 						
 			</ul>		
