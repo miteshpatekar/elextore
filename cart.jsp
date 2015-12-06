@@ -33,7 +33,7 @@
         if(from==null){
             if(deleteCartItem==null){
                 productId=   request.getParameter("productId");
-                System.out.println("user&&&&&&&&&"+productId);
+
             }     
         }
         if(deleteCartItem!=null)

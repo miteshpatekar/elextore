@@ -149,30 +149,57 @@ setProducts();
                   %>
 
 
-
+			<%
+			MongoClient mongo=new MongoClient("52.11.50.218", 27017);
+            DB db = mongo.getDB("Elextore");
+            Map<String, Object> commandArguments = new BasicDBObject();
+            DBCollection reviews = db.getCollection("reviews");
+			//DBObject sort = new BasicDBObject("$sort",new BasicDBObject("reviewRating", -1));
+			//DBObject match = new BasicDBObject("$match", new BasicDBObject("reviewRating", 5));
+			DBCursor cursor = reviews.find();
+			cursor.sort(new BasicDBObject("rating", -1));
+			ArrayList<String> productList = new ArrayList<String>();
+			%>
 			<div class="categories">
-			<div class="itemgrid">
-				<h2>Featured Products</h2>
-				
-				<div class="items" style="margin-left:20px">
-				<ul>
+            			<div class="itemgrid">
+            				<h2>Trending Products</h2>
+            				<div class="items" style="margin-left:20px">
+                            				<ul>
+			<%
+			int i = 0;
+			while(cursor.hasNext() && i<4)
+			{
+				BasicDBObject obj1 = (BasicDBObject) cursor.next();
+				String productName = (String)obj1.get("productName");
 
-				
-                <li>
-                <img src="images/mainpage/image4.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Whirlpool Washing Machine</h4>
-                <p><b>$800 <a href="/elextore/OrderPage.jsp?itemID=4"> Add To Cart </a></b></p>
+				if(productList.contains(productName))
+					continue;
+				productList.add(productName);
+				String productId = obj1.get("productId").toString();
+				ObjectId objectId = new ObjectId(productId);
+				String rating = (String)obj1.get("rating");
+				DBCollection products = db.getCollection("products");
+				BasicDBObject whereQuery = new BasicDBObject();
+				whereQuery.put("_id",objectId);
+				DBObject productObj = products.findOne(whereQuery);
+				String imageURl = "";
+				String price = "";
+				if(productObj != null)
+				{
+					imageURl = (String)productObj.get("imageUrl");
+					price = (String)productObj.get("price");
+				}
+				i++;
+				%>
+				<a href='productDetails.jsp?productId=<%=productId%>'>
+				<li>
+                    <img src="<%=imageURl%>" alt="No Image found for this product" width="250" height="238">
+                    <h4><%=productName%></h4>
+                    <p><b>$<%=price%><a href="cart.jsp?productId=<%=productId%>"> Add To Cart </a></b></p>
                 </li>
-                <li>
-                <img src="images/mainpage/image5.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Samsung LED TV</h4>
-                <p><b>$999 <a href="/elextore/OrderPage.jsp?itemID=5"> Add To Cart </a></b></p>
-                </li>
-                <li>
-                <img src="images/mainpage/image6.jpg" alt="No Image found for this product" width="250" height="238">
-                <h4>Apple MacBook Pro</h4>
-                <p><b>$1999 <a href="/elextore/OrderPage.jsp?itemID=6"> Add To Cart </a></b></p>
-                </li>
+                <%
+			}
+			%>
                 </ul>
 
 				</div>

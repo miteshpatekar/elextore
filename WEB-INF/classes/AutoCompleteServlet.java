@@ -1,4 +1,4 @@
-package servlets;
+
 import java.io.IOException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -90,8 +90,9 @@ public class AutoCompleteServlet extends HttpServlet {
             // put the target composer in the request scope to display
             String targetIdUpperCase = request.getParameter("id");
             String productname = request.getParameter("productName");
+            System.out.println("In lookup");
             System.out.println(targetIdUpperCase);
-            if ((targetIdUpperCase != null) && composers.containsKey(targetIdUpperCase)) {
+            if (targetIdUpperCase != null) {
                 System.out.println("Inside contains inside lookup");
                 request.setAttribute("composer", composers.get(targetId));
 //                context.getRequestDispatcher("/ProductsDisplay?manufacturer="+targetIdUpperCase).forward(request, response);

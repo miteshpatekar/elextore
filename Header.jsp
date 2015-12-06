@@ -31,6 +31,10 @@
 <%@page import="java.text.DateFormat"%>
 <%@page import="beans.*"%>
 <%@page import="servlets.*"%>
+<%@page import="java.util.*"%>
+<%@page import="javax.mail.*"%>
+<%@page import="javax.mail.internet.*"%>
+<%@page import="javax.activation.*"%>
 <html>
 <TITLE>elexTore</TITLE>
 <head>
@@ -39,7 +43,7 @@
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
 <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
- <script type="text/javascript" src="JS/javascript.js"></script>
+ <script type="text/javascript" src="javascript.js"></script>
 
 <link href="css/generic.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.5-dist/css/bootstrap.css">
@@ -49,20 +53,16 @@
 
 <body onload='init()'; background="images/mainpage/image2.jpg">
 	<%
-	int cartItems=0;
+	int cartItems = 0;
 	//HttpSession session=request.getSession();
 	 List<Cart> list=null; 
 	try{
-	HttpSession s=request.getSession();
-list= (List<Cart>) s.getAttribute("list");
+	//HttpSession s=request.getSession();
+	list= (List<Cart>) session.getAttribute("list");
 	String error=session.getAttribute("error").toString();
 	
-	//cartItems=list.size();
-		cartItems = (Integer)s.getAttribute("cartCount");
-		//if (cartItems == null){
-		//	session.setAttribute("cartItems","0");
-		//	cartItems = "0";
-		//}
+	cartItems=list.size();
+
 	}
 	catch(Exception e){
 		//cartItems = 0;
@@ -185,7 +185,11 @@ list= (List<Cart>) s.getAttribute("list");
     }
   }
 }
-
+	function updateCartValue()
+    {
+    	var elem = document.getElementById("cartSize");
+    	elem.value = "My default value";
+    }
 	</script>
 
 </div>
@@ -195,10 +199,10 @@ list= (List<Cart>) s.getAttribute("list");
 				<li><a href="aboutus.jsp">About Us</a></li>
 
 				<li><a href="contactus.jsp">Contact Us</a></li>
-				
-
+	</function>
+</div>
 				<div class="">
-							<!--<form name="autofillform" action="autocomplete">
+						<form name="autofillform" action="autocomplete">
                                                             <table border="0" cellpadding="5">
                                                                     <tbody>
                                                                       <tr>
@@ -217,8 +221,8 @@ list= (List<Cart>) s.getAttribute("list");
                                                                       </tr>
                                                             </tbody>
                                                           </table>
-                                                        </form>-->
-						</div>
+                                                        </form>
+						</div></div>
 						
 			</ul>		
 			
@@ -227,7 +231,7 @@ list= (List<Cart>) s.getAttribute("list");
 
 <div class="search" style="float:right">
 			</div>
-
+<div id="container">
 
 		</div>
 

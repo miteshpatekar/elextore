@@ -64,7 +64,7 @@
 
             <div class="col-lg-4">
                 <h3>Price: $<%=productPrice%></h3><br>
-            	<button type="button" class="btn btn-success"><a href="cart.jsp">Add to Cart</a></button>
+            	<button type="button" class="btn btn-success"><a href="cart.jsp?productId=<%=productId%>">Add to Cart</a></button>
             </div>
 			<br>
 			

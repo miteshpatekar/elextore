@@ -1,4 +1,4 @@
-package servlets;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 import beans.*;
@@ -59,7 +59,7 @@ public class ComposerData {
         while (cursor.hasNext()) {
 
             DBObject obj = cursor.next();
-            String productId = (String)obj.get("_id");
+            String productId = obj.get("_id").toString();
             String productName = (String)obj.get("name");
             String productMaufacturer = (String)obj.get("manufacturer");
             String productRetailer = (String)obj.get("retailerName");
