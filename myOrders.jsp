@@ -115,11 +115,11 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
 <tr><td><h3>Order Id : <%=orderId.toString()%></h3></td></tr>
 <%
     String iscan=(String)obj.get("status");
-                if(iscan.equals("Cancelled"))
+                if(iscan.equals("Cancelled") || iscan.equals("Delivered"))
                 { 
                 %>
                      <td>
-                   Cancelled
+                  <%=iscan%>
                 </td>
                <%
                 }else
@@ -133,6 +133,9 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                 <input type='submit' class="btn btn-danger" value = 'Cancel Order'>
                 </form>
                 </td>
+                <td>Status : <%=iscan%></td>
+               
+                <td>Total Price : <%=obj.get("total")%></td>
               <%
                 }
                 %>

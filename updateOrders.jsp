@@ -5,61 +5,76 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
         HttpSession s=request.getSession();
        
         Boolean isCancelled=false;         
+        Boolean isUpdated=false;
 
         DB db = mongo.getDB("Elextore");
-       String cancelOrder=request.getParameter("cancelOrder");
-        String cancelProduct=request.getParameter("cancelProduct");
+       String updateOrder=request.getParameter("updateOrder");
+        String updateProduct=request.getParameter("updateProduct");
        String orderId= request.getParameter("orderId");
-        System.out.println("Order 0----- "+cancelOrder);
-         if(cancelOrder!=null)
+       // System.out.println("Order 0----- "+cancelOrder);
+         if(updateOrder!=null)
          {
-            if(cancelOrder.equals("cancelOrder"))
+            if(updateOrder.equals("updateOrder"))
             {
+                ObjectId objid =new ObjectId(orderId);
+                 // orderId= request.getParameter("orderId");
+                String status= request.getParameter("status");  
+                 // String isCancelled=request.getParameter("isCancelled");
 
-                //String orderId= request.getParameter("orderId");
-                String stat= request.getParameter("delivery");
-                if(stat.equals("Delivered"))
-                {
-                  isCancelled=true;
-                }
-                else
-                {
-                  ObjectId objid =new ObjectId(orderId);
+                   // ObjectId objid =new ObjectId(orderId);
                     DBCollection orders = db.getCollection("orders");
                     BasicDBObject newDocument = new BasicDBObject();
-                    newDocument.append("$set", new BasicDBObject().append("isCancelled", "true"));
-                    newDocument.append("$set", new BasicDBObject().append("status", "Cancelled"));
+                   //newDocument.append("$set", new BasicDBObject().append("isCancelled", isCancelled));
+                    newDocument.append("$set", new BasicDBObject().append("status",status));
                     BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
 
                     orders.update(searchQuery, newDocument);
-                }
+                    isUpdated=true;
+                //String orderId= request.getParameter("orderId");
+               // String stat= request.getParameter("delivery");
+              //  if(stat.equals("Delivered"))
+               // {
+              //    isCancelled=true;
+              //  }
+             //   else
+               // {
+                 //  ObjectId objid =new ObjectId(orderId);
+                  //  DBCollection orders = db.getCollection("orders");
+                 //   BasicDBObject newDocument = new BasicDBObject();
+                 //   newDocument.append("$set", new BasicDBObject().append("isCancelled", "true"));
+                 //   newDocument.append("$set", new BasicDBObject().append("status", "Cancelled"));
+                 //   BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
+
+                  //  orders.update(searchQuery, newDocument); 
+               // }
                 
                     }
             }
               
             //Cancel product
-            if(cancelProduct!=null)
+            if(updateProduct!=null)
          {
-            if(cancelProduct.equals("cancelProduct"))
+            if(updateProduct.equals("updateProduct"))
             {
+              String orderItemId= request.getParameter("orderItemId");
+              ObjectId objid =new ObjectId(orderId);
+               ObjectId objid1 =new ObjectId(orderItemId);
+                 // orderId= request.getParameter("orderId");
+                String statuss= request.getParameter("statuss");  
+                String quantity=request.getParameter("quantity");
+                 // String isCancelled=request.getParameter("isCancelled");
 
-                String orderItemId= request.getParameter("orderItemId");
-                String stat= request.getParameter("delivery");
-                if(stat.equals("Delivered"))
-                {
-                  isCancelled=true;
-                }
-                else
-                {
-                  ObjectId objid =new ObjectId(orderItemId);
+                   // ObjectId objid =new ObjectId(orderId);
                     DBCollection orders = db.getCollection("orderItems");
                     BasicDBObject newDocument = new BasicDBObject();
-                    newDocument.append("$set", new BasicDBObject().append("isCancelled", "true"));
-                    newDocument.append("$set", new BasicDBObject().append("status", "Cancelled"));
-                    BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
+                   //newDocument.append("$set", new BasicDBObject().append("isCancelled", isCancelled));
+                    newDocument.append("$set", new BasicDBObject().append("status","Delivered"));
+                    newDocument.append("$set", new BasicDBObject().append("quantity",quantity));
+                    BasicDBObject searchQuery = new BasicDBObject().append("_id", objid1);
 
                     orders.update(searchQuery, newDocument);
-                }
+                    isUpdated=true;
+
                 
                     }
             }
@@ -88,6 +103,13 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
 
          <% }
          %>
+          <%
+          if(isUpdated==true)
+          {%>
+         <h2>Order Status updated</h2>
+
+         <% }
+         %>
             <div class="row">
                 <div class="col-lg-10"><h3 >Order Details Update</p> </div>
                 <div class="col-lg-2"> 
@@ -112,36 +134,37 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                     BasicDBObject obj = (BasicDBObject) cursor.next();
                   //  Object orderId=(Object)obj.get("_id");
                     BasicDBList itemsList = (BasicDBList) obj.get("items");
-                  //  System.out.println("orderrrr"+orderId.toString());
+                   System.out.println("orderrrr"+ obj.get("userEmail"));
+                 // String st= (String)obj.get("status");
+                 
+                  String st=(String)obj.get("status");
               %>
                
-<tr><td><h3>Order Id : <%=orderId.toString()%></h3></td></tr>
-<%
-    String iscan=(String)obj.get("status");
-                if(iscan.equals("Cancelled"))
-                { 
-                %>
-                     <td>
-                   Cancelled
-                </td>
-                
-               <%
-                }else
-                {
-                %>
-                   
-                
-              <%
-                }
-                %>
+<tr><td><h3>Order Id : <%=orderId%></h3></td></tr>
+
 
                 <td>
-                   <form class = 'submit-button' method = 'get' action = 'updateOrders.jsp'>
-                  
+                   <form class = 'submit-button' method = 'get' action = 'updateOrders.jsp' >
                    <input type='hidden' name = 'orderId' value = '<%=orderId.toString()%>'>
                    <input type='hidden' name = 'updateOrder' value = 'updateOrder'>
-                <input type='submit' class="btn btn-danger" value = 'Update Order'>
-                </form>
+                  <select class="form-control" id="myselect" name="status" onchange="this.form.submit()">
+                                  <% if(st.equals("Progress")) {%> <option value="Progress" selected>Progress</option>
+                                                    <option value="Cancelled">Cancelled</option>
+                                                    <option value="Delivered">Delivered</option>
+                                                     <%}%>
+                                  <% if(st.equals("Cancelled")) {%><option value="Progress">Progress</option> 
+                                                            <option value="Cancelled" selected>Cancelled</option>
+                                                            <option value="Delivered">Delivered</option>
+                                                             <%}%>
+                                  <% if(st.equals("Delivered")) {%> <option value="Progress">Progress</option>
+                                                            <option value="Cancelled">Cancelled</option>
+                                                            <option value="Delivered" selected>Delivered</option>
+                                                             <%}%>
+                                 
+                                   
+                                </select>
+                    <form>
+
                 </td>
                  <td>User : <%=obj.get("userEmail")%></td>
                   <td>Total Price : <%=obj.get("total")%></td>
@@ -161,6 +184,7 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                // System.out.println("itemorderrr "+pid.toString());
                String pName=(String)obj1.get("productName");
                 String imageUrl=(String)obj1.get("imageUrl");
+                String quant=(String)obj1.get("quantity");
               // System.out.println("77777### "+pName+ " "+pid+" "+itemsList.get(i));
                // if(pid.toString().equals(itemsList.get(i)))
               //  {
@@ -172,28 +196,29 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                    <%=obj.get("date")%>
                 </td>
                 <td>
-                   <select class="form-control" id="myselect" name="newQuantity">
-                                  <% if((Integer)obj1.get("quantity")==1) {%> <option value="1" selected>1</option>
+                <form class = 'submit-button' method = 'get' action = 'updateOrders.jsp'>
+                   <select class="form-control" id="myselect" name="quantity">
+                                  <% if(quant.equals("1")) {%> <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>
                                                     <option value="5">5</option> <%}%>
-                                  <% if((Integer)obj1.get("quantity")==2) {%><option value="1" selected>1</option> 
+                                  <% if(quant.equals("2")) {%><option value="1" selected>1</option> 
                                                             <option value="2" selected>2</option>
                                                             <option value="3">3</option>
                                                             <option value="4">4</option>
                                                             <option value="5">5</option> <%}%>
-                                  <% if((Integer)obj1.get("quantity")==3) {%> <option value="1">1</option>
+                                  <% if(quant.equals("3")) {%> <option value="1">1</option>
                                                             <option value="2">2</option>
                                                             <option value="3" selected>3</option>
                                                             <option value="4">4</option>
                                                             <option value="5">5</option> <%}%>
-                                  <% if((Integer)obj1.get("quantity")==4) {%> <option value="1">1</option>
+                                  <% if(quant.equals("4")) {%> <option value="1">1</option>
                                                         <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4" selected>4</option>
                                                     <option value="5">5</option> <%}%>
-                                  <% if((Integer)obj1.get("quantity")==5) {%> <option value="1">1</option>
+                                  <% if(quant.equals("5")) {%> <option value="1">1</option>
                                                 <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -204,7 +229,7 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
 
               <td>
               
-                <select class="form-control" id="myselect" name="newQuantity">
+                <select class="form-control" id="myselect" name="statuss">
                                   <% if(obj1.get("status").equals("Progress")) {%> <option value="Progress" selected>Progress</option>
                                                     <option value="Cancelled">Cancelled</option>
                                                     <option value="Delivered">Delivered</option>
@@ -222,11 +247,11 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                                 </select>
                 </td>
           <td>
-                   <form class = 'submit-button' method = 'get' action = 'updateOrders.jsp'>
+                
                   
                    <input type='hidden' name = 'orderItemId' value = '<%=pid.toString()%>'>
-                   <input type='hidden' name = 'updateOrder' value = 'updateOrder'>
-                <input type='submit' class="btn btn-danger" value = 'Update Order'>
+                   <input type='hidden' name = 'updateProduct' value = 'updateProduct'>
+                <input type='submit' class="btn btn-danger" value = 'Update Product'>
                 </form>
                 </td>
                 

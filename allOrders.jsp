@@ -114,11 +114,11 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
 <tr><td><h3>Order Id : <%=orderId.toString()%></h3></td></tr>
 <%
     String iscan=(String)obj.get("status");
-                if(iscan.equals("Cancelled"))
+                if(iscan.equals("Cancelled") || iscan.equals("Delivered"))
                 { 
                 %>
                      <td>
-                   Cancelled
+                   <%=iscan%>
                 </td>
                 
                <%
@@ -137,10 +137,11 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                    <form class = 'submit-button' method = 'get' action = 'updateOrders.jsp'>
                   
                    <input type='hidden' name = 'orderId' value = '<%=orderId.toString()%>'>
-                   <input type='hidden' name = 'updateOrder' value = 'updateOrder'>
+                   <input type='hidden' name = 'updateOrder1' value = 'updateOrder1'>
                 <input type='submit' class="btn btn-danger" value = 'Update Order'>
                 </form>
                 </td>
+                <td>Status : <%=iscan%></td>
                 <td>User : <%=obj.get("userEmail")%></td>
                 <td>Total Price : <%=obj.get("total")%></td>
               <%
@@ -187,7 +188,8 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
                    Cancelled
                 </td>
                <%
-                }else
+                }       
+                else
                 {
                 %>
                     <td>
