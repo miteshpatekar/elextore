@@ -1,4 +1,4 @@
-<%@include file="header2.jsp" %>
+<%@include file="Header.jsp" %>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
 <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
@@ -20,8 +20,8 @@ try{
 %>
 <br>
 
-				</td>
-		<td>
+				
+		
 				<div id="container">
 				<div id="wrapper">
 				<div id="sliderFrame">
@@ -49,12 +49,9 @@ try{
             </fieldset>    
         </form>
     </div>
-				</td>
 				
-			</tr>
-			</table>
 			
 	</div>
-
+</div>
 </body>
 </html>
