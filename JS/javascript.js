@@ -12,8 +12,7 @@ function init() {
 }
 
 function doCompletion() {
-	console.log("in do completion")
-    var url = "AutoCompleteServlet?action=complete&id=" + escape(completeField.value);
+    var url = "autocomplete?action=complete&id=" + escape(completeField.value);
     req = initRequest();
     req.open("GET", url, true);
     req.onreadystatechange = callback;
@@ -64,7 +63,7 @@ function appendComposer(firstName,lastName,composerId) {
 
     linkElement = document.createElement("a");
     linkElement.className = "popupItem";
-    linkElement.setAttribute("href", "AutoCompleteServlet?action=lookup&id=" + composerId+"&productName="+firstName);
+    linkElement.setAttribute("href", "autocomplete?action=lookup&id=" + composerId+"&productName="+firstName);
     linkElement.appendChild(document.createTextNode(firstName + " " + lastName));
     cell.appendChild(linkElement);
 }

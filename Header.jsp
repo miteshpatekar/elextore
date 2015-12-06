@@ -192,7 +192,7 @@ list= (List<Cart>) s.getAttribute("list");
 				
 
 				<div class="">
-							<form name="autofillform" action="/AutoCompleteServlet">
+							<!--<form name="autofillform" action="autocomplete">
                                                             <table border="0" cellpadding="5">
                                                                     <tbody>
                                                                       <tr>
@@ -211,7 +211,7 @@ list= (List<Cart>) s.getAttribute("list");
                                                                       </tr>
                                                             </tbody>
                                                           </table>
-                                                        </form>
+                                                        </form>-->
 						</div>
 						
 			</ul>		

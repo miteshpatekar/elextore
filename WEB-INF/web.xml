@@ -29,11 +29,10 @@
     </servlet>
   <servlet>
         <servlet-name>AutoCompleteServlet</servlet-name>
-        <servlet-class>AutoCompleteServlet</servlet-class>
+        <servlet-class>servlets.AutoCompleteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AutoCompleteServlet</servlet-name>
-
         <url-pattern>/autocomplete</url-pattern>
     </servlet-mapping>	
 
