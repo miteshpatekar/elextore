@@ -12,28 +12,7 @@
 </head>
 
 		
-			<TABLE BORDER="0" WIDTH="100%">
-			<tr>
-				<td ALIGN="LEFT" WIDTH="10%">
-				
-				<H3><img src="images/products.png" alt="" /></H3>
-				<a href="Products.jsp?category=casuals" class="products" >Appliances</a>
-				<br><br>
-				<a href="Products.jsp?category=Equipments" class="products" >TV & Home Theater</a>
-				<br><br>
-				<a href="Products.jsp?category=footwear" class="products" >Computers & Tablets</a>
-				<br><br>
-				<a href="Products.jsp?category=men" class="products" >Cameras & Camcorders</a>
-				<br><br>
-				<a href="Products.jsp?category=women" class="products" >Audio</a>
-				<br><br>
-							
-				</td>
-				
-
-				
-				<td>
-				
+		
 				
 				<div id="wrapper">
 
@@ -65,7 +44,7 @@
             </fieldset>    
         </form>
     </div>
-	<h3 align="left"> Click on SEND Button to send query/request to admin </h3>
+	<h3 align="left"> Submit your ticket </h3>
 				</td>
 			</tr>
 			</table
