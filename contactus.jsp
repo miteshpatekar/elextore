@@ -10,7 +10,7 @@
 
 	
 </head>
->>>>>>> Stashed changes
+
 		
 			<TABLE BORDER="0" WIDTH="100%">
 			<tr>

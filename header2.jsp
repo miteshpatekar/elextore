@@ -111,6 +111,12 @@ list= (List<Cart>) s.getAttribute("list");
 				<%if(role.equals("salesMan")){
 					%>
 					<li><a href="allOrders.jsp" class="acolor" style="color:#30A2DE">All Orders</a></li>
+					<li><a href="addCoupon.jsp" class="acolor" style="color:#30A2DE">Add Coupon</a></li>
+				<%}%>
+				<%if(role.equals("customerSupport")){
+					%>
+					<li><a href="ticketview.jsp" class="acolor" style="color:#30A2DE">Tickets</a></li>
+					
 				<%}%>
 					<li><a href="myOrders.jsp" class="acolor" style="color:#30A2DE">My Orders</a></li>
 					<li><b><i><a style="color:#1F4255"  href="">Welcome <%= userName%></a></i></b></li>

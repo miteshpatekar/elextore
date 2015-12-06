@@ -34,11 +34,11 @@ try{
 				<div id="wrapper">
 				<div id="sliderFrame">
 
-<<<<<<< Updated upstream
+
         <form action="SignUp" method="post" name="signupForm" onsubmit="return validateInfo()">
-=======
+
         <form action="SignUp" method="POST" name="signupForm" >
->>>>>>> Stashed changes
+
             <fieldset align="center">
                 <legend>Register Form</legend>
                 <div>
@@ -50,13 +50,14 @@ try{
                     <input type="text" name="lName" placeholder="Last Name " required/>
                 </div>
                 <div>
-					<div class="small">Password: </div>
-                    <input type="password" name="password" pattern=".{4,}"placeholder="Password" required/>
-                </div>
-                <div>
 					<div class="small">Email: </div>
                     <input type="email" name="email" placeholder="Email" required/>
                 </div>
+                <div>
+					<div class="small">Password: </div>
+                    <input type="password" name="password" pattern=".{4,}"placeholder="Password" required/>
+                </div>
+                
                 <div> 
                 <input type="submit" name="button" value="Register" />
                 <div id="slider">

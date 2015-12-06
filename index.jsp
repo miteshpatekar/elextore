@@ -117,6 +117,28 @@ public void setAdmins()
                     BasicDBObject doc1 = new BasicDBObject(commandArguments1);
                     users.insert(doc1);
                 }
+
+
+                Map<String, Object> commandArguments2 = new BasicDBObject();
+            BasicDBObject whereQuery2 = new BasicDBObject();
+            whereQuery2.put("email", "customersupport@elextore.com");
+            DBCursor cursor2 = users.find(whereQuery2);
+            int flag3=0;
+            while(cursor2.hasNext()) {
+                flag3=1;    
+                cursor2.next();             
+                }
+
+                if(flag3==0)
+                {
+                    commandArguments2.put("email", "customersupport@elextore.com");
+                    commandArguments2.put("fName", "Customer Support");
+                    commandArguments2.put("lName", "Support admin");
+                    commandArguments2.put("password", "sa123");
+                    commandArguments2.put("role", "customerSupport");      
+                    BasicDBObject doc2 = new BasicDBObject(commandArguments2);
+                    users.insert(doc2);
+                }
 }
 %>
 

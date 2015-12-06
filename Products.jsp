@@ -27,7 +27,7 @@
       <br>
       <div class="container">
       
-            <div class="col-lg-2">Filter by Brand Name:
+   <!--          <div class="col-lg-2">Filter by Brand Name:
             	<div class="input-group">
       				<span class="input-group-addon">
        				<input type="checkbox" aria-label="...">
@@ -116,7 +116,7 @@
     			</div>
 				
 			</div>
-			</div>
+			</div> -->
 			
              <div class="col-lg-10" style="border-left:2px solid grey">
              	 </p>
@@ -142,8 +142,8 @@
 
 %>          
 		        <a href='productDetails.jsp?productId=<%=orderId.toString()%>'>
-              <li >
-                <img src='<%=obj.get("imageUrl")%>' alt="No Image found for this product" width="250" height="238">
+            <li style="height:400px">
+                <img src='<%=obj.get("imageUrl")%>' onerror="this.src='images/default.jpg'" width="250" height="238">
                 <h4><%=obj.get("name")%></h4>
                 <p><h4><b>$<%=obj.get("price")%></b> <b><a href='cart.jsp?productId=<%=orderId.toString()%>'> Add To Cart </a></b></h4></p>
                
