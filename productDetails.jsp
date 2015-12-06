@@ -76,7 +76,7 @@
     			<h3 class="panel-title">Description</h3>
   				</div>
   				<div class="panel-body">
-    				<textarea type="text" class="form-control" placeholder="Description"><%=productDescription%></textarea>
+    				<textarea type="text" class="form-control" placeholder="Description" required><%=productDescription%></textarea>
   				</div>
   
 			</div>

@@ -122,12 +122,12 @@
                      <table class="table table-striped">
                         <tr>
                             <th>Product Name :</th>
-                            <td><input type="text" name="name" placeholder="Enter Product Name" value="<%=productName%>"/></td>
+                            <td><input type="text" name="name" placeholder="Enter Product Name" value="<%=productName%>" required/></td>
                             <td><input type="hidden" name="productId" value="<%=productId%>"/></td>
                         </tr>
                         <tr>
                             <th>Retailer Name :</th>
-                            <td><input type="text" name="retailer" placeholder="Enter Retailer Name" value="<%=retailerName%>"/></td>
+                            <td><input type="text" name="retailer" placeholder="Enter Retailer Name" value="<%=retailerName%> "required/></td>
                         </tr>
                         <tr>
                             <th>Manufacturer :</th>
@@ -136,7 +136,7 @@
                         <tr>
                             <th>Product Category :</th>
                             <td>
-                                <select id="categoriesDropDown" name="categorylist">
+                                <select id="categoriesDropDown" name="categorylist" required>
                                     <% if(productCategory.equals("Appliances")) {%> <option value="Appliances" selected>Appliances</option>
                                                     <option value="CameraCamcorders">CameraCamcorders</option>
                                                     <option value="ComputersTablets">ComputersTablets</option>
@@ -162,19 +162,21 @@
                                                     <option value="ComputersTablets">ComputersTablets</option>
                                                     <option value="TVHomeTheater">TVHomeTheater</option>
                                                     <option value="Audio" selected>Audio</option> <%}%>
+
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <th>Product Price :</th>
-                            <td><input type="number" name="price" placeholder="Enter Product Price" value="<%=productPrice%>"/></td>
+                            <td><input type="number" name="price" placeholder="Enter Product Price" value="<%=productPrice%>" required/></td>
                         </tr>
                         <tr>
                             <th>Product Description :</th>
-                            <td><input type="text" name="description" placeholder="Enter Product Description" value="<%=productDescription%>"/></td>
+                            <td><input type="text" name="description" placeholder="Enter Product Description" value="<%=productDescription%>" required/></td>
                         </tr>
                         <tr>
                             <th>Product Rebate :</th>
+
                             <td><input type="text" name="rebate" value="<%=rebate%>"></td>
                         </tr>
                         <tr>

@@ -13,38 +13,6 @@
 
 <script type="text/javascript">
 
-function validateInput(){
-	
-	var x = document.forms["signupForm"]["email"].value;
-		var atpos = x.indexOf("@");
-		var dotpos = x.lastIndexOf(".");
-		
-	if(document.signupForm.fName.value==""){
-		alert("Please Enter First Name: ");
-		return false;
-	}
-	else if(document.signupForm.lName.value==""){
-		alert("Please Enter Last Name: ");
-		return false;	
-	}
-	else if(document.signupForm.password.value==""){
-		alert("Please Enter PassWord: ");
-		return false;
-	}
-	else if(x==""){
-		alert("Please Enter Email: ");
-		return false;
-	}
-	else if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length){
-		alert("Not a valid e-mail address");
-        return false;
-	}
-	else{
-		document.signupForm.submit();
-		return true;
-	}
-	
-}
 
 </script>
 	<%
@@ -66,27 +34,31 @@ try{
 				<div id="wrapper">
 				<div id="sliderFrame">
 
+<<<<<<< Updated upstream
         <form action="SignUp" method="post" name="signupForm" onsubmit="return validateInfo()">
+=======
+        <form action="SignUp" method="POST" name="signupForm" >
+>>>>>>> Stashed changes
             <fieldset align="center">
                 <legend>Register Form</legend>
                 <div>
 					<div class="small">First Name: </div>
-                    <input type="text" name="fName" placeholder="First Name"/>
+                    <input type="text" name="fName" placeholder="First Name" required/>
                 </div>
                 <div>
 					<div class="small">Last Name: </div>
-                    <input type="text" name="lName" placeholder="Last Name "/>
+                    <input type="text" name="lName" placeholder="Last Name " required/>
                 </div>
                 <div>
 					<div class="small">Password: </div>
-                    <input type="password" name="password" placeholder="Password"/>
+                    <input type="password" name="password" pattern=".{4,}"placeholder="Password" required/>
                 </div>
                 <div>
 					<div class="small">Email: </div>
-                    <input type="text" name="email" placeholder="Email"/>
+                    <input type="email" name="email" placeholder="Email" required/>
                 </div>
                 <div> 
-                <input type="submit" name="button" value="Register" onclick="return validateInput()"  />
+                <input type="submit" name="button" value="Register" />
                 <div id="slider">
 					<a href="images/mainpage/image1.jpg" target="_blank">
 					<img src="images/mainpage/images1.jpg" alt="Welcome to elexTore.com" />

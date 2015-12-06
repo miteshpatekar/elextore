@@ -2,7 +2,15 @@
 /* For generic page styles. Not for sliders. */
 
 body {background:#F6F6F6;font:normal 0.9em Arial; margin:0; padding:0; padding-bottom:60px;}
-h2 {display:inline;}
+h2 {display:inline;
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
 .div1, .div2 {width:700px;margin:0 auto;}
 .div1 {margin-top:30px;margin-bottom:60px;text-align:center;line-height:20px;}
 .div1 P {font-size:18px;}

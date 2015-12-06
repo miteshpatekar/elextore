@@ -30,11 +30,11 @@ try{
                 <legend>Login Form</legend>
                 <div>
 					<div class="small">User: </div>
-                    <input type="text" name="email" placeholder="Enter Email address"/>
+                    <input type="text" name="email" placeholder="Enter Email address" required/>
                 </div>
                 <div>
 					<div class="small">Password: </div>
-                    <input type="password" name="password" placeholder="Password"/>
+                    <input type="password" name="password" placeholder="Password" required/>
                 </div>
                 
                 <input type="submit" value="Sign In">
