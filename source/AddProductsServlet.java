@@ -57,7 +57,7 @@ public class AddProductsServlet extends HttpServlet {
             commandArguments.put("isActive", true);
             BasicDBObject doc = new BasicDBObject(commandArguments);
             productDB.insert(doc);
-            request.getRequestDispatcher("/addProductsManager.jsp?success=Product Added Successfully..!").forward(request, response);
+            response.sendRedirect("/elextore/addProductsManager.jsp?success=Product Added Successfully..!");
         }
         else if(op != null && op.equals("delete"))
         {
@@ -68,7 +68,8 @@ public class AddProductsServlet extends HttpServlet {
             newDocument.append("$set", new BasicDBObject().append("isActive", false));
             BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
             products.update(searchQuery, newDocument);
-            request.getRequestDispatcher("/addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
+          //  request.getRequestDispatcher("/addProductsManager.jsp?success=Product Deleted Successfully..!").forward(request, response);
+            response.sendRedirect("/elextore/addProductsManager.jsp?success=Product Deleted Successfully..!");
         }
         else if(buttonValue != null && buttonValue.equals("Update Product")){
             String productId = request.getParameter("productId");

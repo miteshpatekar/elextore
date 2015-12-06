@@ -116,6 +116,11 @@
          %>
          <h4 style="color:blue">Products updated successfully !</h4>
      <%}%>
+     <%if(buttonText.equals("Update Product")){%>
+             <form class ='submit-button' method='get' action='addProductsManager.jsp'>
+            <%}else{%>
+             <form class ='submit-button' method='get' action='servlets/AddProductsServlet'>
+            <%}%>
         <form class ='submit-button' method='get' action='addProductsManager.jsp'>
             <div class="row">
                 <div class="col-lg-8">
@@ -162,6 +167,12 @@
                                                     <option value="ComputersTablets">ComputersTablets</option>
                                                     <option value="TVHomeTheater">TVHomeTheater</option>
                                                     <option value="Audio" selected>Audio</option> <%}%>
+                                <% if(productCategory.equals("")) {%>     <option value="Appliances">Appliances</option>
+                                                    <option value="CameraCamcorders">CameraCamcorders</option>
+                                                    <option value="ComputersTablets">ComputersTablets</option>
+                                                    <option value="TVHomeTheater">TVHomeTheater</option>
+                                                    <option value="Audio">Audio</option> 
+                                                    <%}%>
 
                                 </select>
                             </td>
@@ -188,7 +199,11 @@
             </div>
             <!-- <button type="submit" class="btn btn-success" name="addUpdateButton" value="<%=buttonText%>"><%=buttonText%></button> -->
             <input type="hidden"  name="productId" value="<%=productId%>">
-            <button type="submit" class="btn btn-success" name="updateProduct" value="updateProduct">Update </button>
+            <%if(buttonText.equals("Update Product")){%>
+            <button type="submit" class="btn btn-success" name="updateProduct" value="<%=buttonText%>"><%=buttonText%> </button>
+            <%}else{%>
+            <button type="submit" class="btn btn-success" name="addUpdateButton" value="<%=buttonText%>"><%=buttonText%> </button>
+            <%}%>
         </form>
     </body>
 <%@include file="footer.jsp" %>
