@@ -34,11 +34,11 @@ try{
 				<div id="wrapper">
 				<div id="sliderFrame">
 
-<<<<<<< Updated upstream
+
         <form action="SignUp" method="post" name="signupForm" onsubmit="return validateInfo()">
-=======
+
         <form action="SignUp" method="POST" name="signupForm" >
->>>>>>> Stashed changes
+
             <fieldset align="center">
                 <legend>Register Form</legend>
                 <div>
@@ -59,13 +59,7 @@ try{
                 </div>
                 <div> 
                 <input type="submit" name="button" value="Register" />
-                <div id="slider">
-					<a href="images/mainpage/image1.jpg" target="_blank">
-					<img src="images/mainpage/images1.jpg" alt="Welcome to elexTore.com" />
-					</a>
-					<img src="images/mainpage/images2.jpg" alt="" />
-					<img src="images/mainpage/images3.jpg" alt="" />
-					</div>
+                
             </fieldset>  
 
         </form>
