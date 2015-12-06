@@ -33,11 +33,10 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AutoCompleteServlet</servlet-name>
-        <url-pattern>/AutoCompleteServlet</url-pattern>
-    </servlet-mapping>
-    
 
-	
+        <url-pattern>/autocomplete</url-pattern>
+    </servlet-mapping>	
+
 	<servlet>
         <servlet-name>SendEmail</servlet-name>
         <servlet-class>SendEmail</servlet-class>

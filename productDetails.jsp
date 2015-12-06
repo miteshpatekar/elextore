@@ -66,7 +66,15 @@
                 <h3>Price: $<%=productPrice%></h3><br>
             	<button type="button" class="btn btn-success"><a href="cart.jsp">Add to Cart</a></button>
             </div>
+			<br>
+			
+			<button type="button" class="btn btn-success"><a href="ViewReviews.jsp?productId=<%=productId%>&productName=<%=productName%>">View Reviews</a></button>
+			      
+            </div>
            
+		   
+		   
+		   
    </div>
    <div class="row"></div></br>
    <div class="row">
