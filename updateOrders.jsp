@@ -74,7 +74,6 @@ MongoClient mongo = new MongoClient("52.11.50.218", 27017);
 
                     orders.update(searchQuery, newDocument);
                     isUpdated=true;
-
                 
                     }
             }

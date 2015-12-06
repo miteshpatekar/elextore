@@ -9,7 +9,7 @@
     DBCollection collection1 = db.getCollection("Categories");
     BasicDBObject whereQuery1 = new BasicDBObject();
     DBCursor cursor1 = collection1.find();
-
+ 
     String productName = "";
     String retailerName = "";
     Double productPrice = 0.0;
@@ -19,6 +19,67 @@
     boolean rebate = false;
     String buttonText = "Add Product";
     String productId = "";
+    Boolean isUpdated=false;
+    String manufacturer="";
+
+    String updateProduct=request.getParameter("updateProduct");
+    if(updateProduct!=null)
+         {
+     System.out.println("enterrrrr &&&&");
+            if(updateProduct.equals("updateProduct"))
+            {
+              String pid= request.getParameter("productId");
+              ObjectId objid =new ObjectId(pid);
+              
+                 // orderId= request.getParameter("orderId");
+                String name= request.getParameter("name");
+                String retailer= request.getParameter("retailer");  
+                String price= request.getParameter("price");
+                String categoryL=request.getParameter("categorylist");
+                String description= request.getParameter("description");
+                String rebate1= request.getParameter("rebate");
+                String onsale1= request.getParameter("onsale"); 
+                String manuf= request.getParameter("manufacturer"); 
+             //   String quantity=request.getParameter("quantity");
+                 // String isCancelled=request.getParameter("isCancelled");
+
+                   // ObjectId objid =new ObjectId(orderId);
+                    DBCollection products = db.getCollection("products");
+                    BasicDBObject newDocument = new BasicDBObject();
+                   //newDocument.append("$set", new BasicDBObject().append("isCancelled", isCancelled));
+                    newDocument.append("$set", new BasicDBObject().append("name",name));
+                    newDocument.append("$set", new BasicDBObject().append("category",categoryL));
+                    newDocument.append("$set", new BasicDBObject().append("description",description));
+                     newDocument.append("$set", new BasicDBObject().append("retailerName",price));
+                     newDocument.append("$set", new BasicDBObject().append("manufacturer",manuf));
+                    newDocument.append("$set", new BasicDBObject().append("price",price));
+                   // newDocument.append("$set", new BasicDBObject().append("quantity",quantity));
+                    BasicDBObject searchQuery = new BasicDBObject().append("_id", objid);
+
+                    products.update(searchQuery, newDocument);
+                    isUpdated=true;
+                
+                    DBCollection collection = db.getCollection("products");
+        productId = request.getParameter("productId");
+        ObjectId objProductId =new ObjectId(productId);
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("_id", objProductId);
+        DBCursor cursor = collection.find(whereQuery);
+        while(cursor.hasNext()) {
+                BasicDBObject obj = (BasicDBObject) cursor.next();
+                productName = (String)obj.get("name");
+                retailerName = (String)obj.get("retailerName");
+                productCategory = (String)obj.get("category");
+                productDescription = (String)obj.get("description");
+                manufacturer=(String)obj.get("manufacturer");
+                Double d = new Double(obj.get("price").toString());
+                productPrice = d;
+                onsale = (Boolean)obj.get("isOnSale");
+                //rebate = (Boolean)obj.get("rebate");
+            }
+                    }
+            }
+
     if(request.getParameter("op") != null && request.getParameter("op").equals("update"))
     {
         buttonText = "Update Product";
@@ -33,13 +94,16 @@
                 productName = (String)obj.get("name");
                 retailerName = (String)obj.get("retailerName");
                 productCategory = (String)obj.get("category");
+                 manufacturer=(String)obj.get("manufacturer");
                 productDescription = (String)obj.get("description");
                 Double d = new Double(obj.get("price").toString());
                 productPrice = d;
                 onsale = (Boolean)obj.get("isOnSale");
                 //rebate = (Boolean)obj.get("rebate");
+                System.out.println("Categoryyyyyy "+productName+productCategory);
             }
     }
+
 
 %>
     <body>
@@ -48,7 +112,11 @@
         if(success != null && success != "")
             out.println(success);
          %>
-        <form class ='submit-button' method='get' action='servlets/AddProductsServlet'>
+         <%if(isUpdated){
+         %>
+         <h4 style="color:blue">Products updated successfully !</h4>
+     <%}%>
+        <form class ='submit-button' method='get' action='addProductsManager.jsp'>
             <div class="row">
                 <div class="col-lg-8">
                      <table class="table table-striped">
@@ -62,22 +130,38 @@
                             <td><input type="text" name="retailer" placeholder="Enter Retailer Name" value="<%=retailerName%>"/></td>
                         </tr>
                         <tr>
+                            <th>Manufacturer :</th>
+                            <td><input type="text" name="manufacturer" placeholder="Enter Manufacturer Name" value="<%=manufacturer%>"/></td>
+                        </tr>
+                        <tr>
                             <th>Product Category :</th>
                             <td>
                                 <select id="categoriesDropDown" name="categorylist">
-                                    <%
-                                        while(cursor1.hasNext())
-                                        {
-                                           BasicDBObject obj1 = (BasicDBObject) cursor1.next();
-                                           String category=(String)obj1.get("Category");
-                                           if(category.equals(productCategory)){%>
-                                                <option value="category" selected="selected"><%=category%></option>
-                                           <%}else{%>
-                                                <option value="category"><%=category%></option>
-
-                                            <%}
-                                        }%>
-                                    %>
+                                    <% if(productCategory.equals("Appliances")) {%> <option value="Appliances" selected>Appliances</option>
+                                                    <option value="CameraCamcorders">CameraCamcorders</option>
+                                                    <option value="ComputersTablets">ComputersTablets</option>
+                                                    <option value="TVHomeTheater">TVHomeTheater</option>
+                                                    <option value="Audio">Audio</option> <%}%>
+                                  <% if(productCategory.equals("CameraCamcorders")) {%><option value="Appliances">Appliances</option>
+                                                    <option value="CameraCamcorders" selected>CameraCamcorders</option>
+                                                    <option value="ComputersTablets">ComputersTablets</option>
+                                                    <option value="TVHomeTheater">TVHomeTheater</option>
+                                                    <option value="Audio">Audio</option> <%}%>
+                                  <% if(productCategory.equals("ComputersTablets")) {%> <option value="Appliances">Appliances</option>
+                                                    <option value="CameraCamcorders">CameraCamcorders</option>
+                                                    <option value="ComputersTablets" selected>ComputersTablets</option>
+                                                    <option value="TVHomeTheater">TVHomeTheater</option>
+                                                    <option value="Audio">Audio</option> <%}%>
+                                  <% if(productCategory.equals("TVHomeTheater")) {%> <option value="Appliances">Appliances</option>
+                                                    <option value="CameraCamcorders">CameraCamcorders</option>
+                                                    <option value="ComputersTablets">ComputersTablets</option>
+                                                    <option value="TVHomeTheater" selected>TVHomeTheater</option>
+                                                    <option value="Audio">Audio</option> <%}%>
+                                  <% if(productCategory.equals("Audio")) {%> <option value="Appliances">Appliances</option>
+                                                    <option value="CameraCamcorders">CameraCamcorders</option>
+                                                    <option value="ComputersTablets">ComputersTablets</option>
+                                                    <option value="TVHomeTheater">TVHomeTheater</option>
+                                                    <option value="Audio" selected>Audio</option> <%}%>
                                 </select>
                             </td>
                         </tr>
@@ -91,16 +175,18 @@
                         </tr>
                         <tr>
                             <th>Product Rebate :</th>
-                            <td><input type="checkbox" name="rebate" value="<%=rebate%>"></td>
+                            <td><input type="text" name="rebate" value="<%=rebate%>"></td>
                         </tr>
                         <tr>
                             <th>Product On Sale :</th>
-                            <td><input type="checkbox" name="onsale" value="<%=onsale%>"></td>
+                            <td><input type="text" name="onsale" value="<%=onsale%>"></td>
                         </tr>
                      </table>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success" name="addUpdateButton" value="<%=buttonText%>"><%=buttonText%></button>
+            <!-- <button type="submit" class="btn btn-success" name="addUpdateButton" value="<%=buttonText%>"><%=buttonText%></button> -->
+            <input type="hidden"  name="productId" value="<%=productId%>">
+            <button type="submit" class="btn btn-success" name="updateProduct" value="updateProduct">Update </button>
         </form>
     </body>
 <%@include file="footer.jsp" %>
